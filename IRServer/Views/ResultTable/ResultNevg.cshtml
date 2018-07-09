@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Результаты Недвижимость";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.4/js/dataTables.fixedColumns.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
+<script src="~/Scripts/myJsFunction.js"></script>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<h2>Результаты Недвижимость</h2>
+<div class="row">
+    <button id="deleteBtn" class="btn k-grid-delete navbar-btn" onclick="DeleteRows(3)"> Удалить результаты</button>
+</div>
+<div class="row">
+    <table id="tableDB" class="table table-bordered myctable" style="width:100%;"></table>
+</div>
+
+<script type="text/javascript">
+    var selected = [];
+    var assetListVM;
+    $(function () {
+        assetListVM = {
+            dt: null,
+
+            init: function () {
+                dt = $('#tableDB').DataTable({
+                    "scrollX": true,
+                    "scrollY": "65vh",
+                    "serverSide": true,
+                    "processing": true,
+                    "autoWidth": false,
+                    "ajax": {
+                        "url": "@Url.Action("GetNedvigimost", "ResultTable")",
+                        "type": "POST"
+                    },
+                    "columns": [
+                        { title: "ID", data: "Id", "width": "25px" },
+                        { title: "Сайт", data: "Site", "width": "65px" },
+                        { title: "Задание", data: "TaskName", "width": "65px" },
+                        { title: "Пользователь", data: "User", "width": "110px" },
+                        {
+                            title: "Фото+URL подр", data: "Photo", "width": "150px", render: function (data, type, row, meta) {
+                                return '<a href="' + row.UrlString + '">' + '<img width="100%" src="' + data + '"/></a>';
+                            }
+                        },
+                        {
+                            title: "Описание", data: "Discription", "width": "300px", render: function (data, type, row, meta) {
+                                if (data!=null && data.length > 400) {
+                                    data = data.substr(0, 399);
+                                    data += "...";
+                                }
+                                return data;
+                            }},
+                        { title: "Цена", data: "Price", "width": "65px" },
+                        { title: "Цена м<sup><small>2</small></sup>", data: "PriceM", "width": "65px" },
+                        { title: "Комнат", data: "CountRoom", "width": "65px" },
+                        { title: "Общая площадь", data: "AreaAll", "width": "65px" },
+                        { title: "Этаж", data: "Etag", "width": "65px" },
+                        { title: "Этажей", data: "CountFloor", "width": "65px" },
+                        { title: "Адрес", data: "Adress", "width": "110px" },
+                        { title: "Метро", data: "Metro", "width": "80px" },
+                        {
+                            title: "Дата объявления", data: "DateCreate", "width": "65px", render: function (data, type, row, meta) {
+                                return ToJavaScriptDate(data);
+                            }
+                        },
+                        { title: "Телефон", data: "Contact", "width": "110px" },
+                        { title: "Жилая площадь", data: "AreaLife", "width": "65px" },
+                        { title: "Площадь комнат", data: "AreaRoom", "width": "65px" },
+                        { title: "Площадь кухни", data: "AreaKyhnya", "width": "65px" },
+                        { title: "Тип дома", data: "TypeHouse", "width": "65px"},
+                        { title: "Код уникальности", data: "MD5", "width": "110px" },
+                        { title: "Скрипт", data: "Script", "width": "110px" }
+                    ],
+                    "order": [[0, "desc"]],
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "select": true,
+                    "rowCallback": function( row, data ) {
+                        if ( $.inArray(data.Id, selected) !== -1 ) {
+                            $(row).addClass('selected');
+                        }
+                    }
+
+                });
+            }
+        }
+
+
+
+// initialize the datatables
+        assetListVM.init();
+
+        $('#tableDB tbody').on('click', 'tr', function () {
+            console.log($(this).text());
+            var id = this.id;
+            var index = $.inArray(id, selected);
+
+            if ( index === -1 ) {
+                selected.push( id );
+            } else {
+                selected.splice( index, 1 );
+            }
+
+            $(this).toggleClass('selected');
+        } );
+
+    });
+
+
+
+</script> 

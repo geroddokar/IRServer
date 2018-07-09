@@ -1,0 +1,54 @@
+﻿@using IRServer.Models
+@model IRServer.Models.ResultAvtoListViewModel
+
+@{
+    ViewBag.Title = "Результаты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/myJsFunction.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col">
+        1 из 3
+    </div>
+    <div class="col-8">
+        <ul class="list-unstyled">
+            @foreach (var p in Model.Results)
+            {
+                <li class="media border">
+                    <img class="resultphoto rounded float-left mr-3" src="@p.Photo" />
+                    <div class="media-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <h4 class="mt-0  mb-1">@p.Marka</h4>
+                                <div class="wrap">
+                                    <ol>
+                                        <li> @p.Year</li>
+                                        <li> @p.Probeg</li>
+                                        <li> @p.Kuzov</li>
+                                        <li> @p.KPP</li>
+                                        <li> @p.Dvigatel</li>
+                                        <li> @p.Obem</li>
+                                        <li> @p.Color</li>
+                                        <li> @p.Privod</li>
+                                        <li> @p.Power</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h4>@p.Price</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="pagination">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("GetResult", new { page = x }))
+        </div>
+    </div>
+    <div class="col">
+        3 из 3
+    </div>
+</div>

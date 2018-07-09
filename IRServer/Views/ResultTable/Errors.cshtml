@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Таблица с Ошибками";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.4/js/dataTables.fixedColumns.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<h2>Таблица с ошибками скриптов</h2>
+<script>
+    function DeleteRows() {
+        $.ajax({
+            url:  "/ResultTable/DeleteResult/999999",
+            type: 'GET',
+            dataType: 'application/x-www-form-urlencoded',
+            success: function (data, textStatus, xhr) {
+                console.log(data);
+                location.reload();
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('Error in Operation');
+            }
+        });
+
+    }
+
+</script>
+<style>
+    
+    .icon {
+        text-align: center;
+        background: 50% no-repeat;
+    }
+
+    .icon_type_table {
+        background-image: url(../../styles/table.svg);
+         
+        opacity: .3;
+
+    }
+
+    .icon_type_list {
+        background-image: url(../../styles/list.svg);
+        opacity: .3;
+    }
+</style>
+<div class="row">
+    <button id="deleteBtn" class="btn k-grid-delete navbar-btn" onclick="DeleteRows()"> Удалить результаты</button>
+</div>
+<div class="row">
+    <table id="tableDB" class="table table-striped table-bordered" style="width:100%;" >
+    
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    var selected = [];
+    var assetListVM;
+    $().button('toggle');
+    $(function () {
+        assetListVM = {
+            dt: null,
+
+            init: function () {
+                dt = $('#tableDB').DataTable({
+                    "scrollX": true,
+                    "scrollY": "50vh",
+                    "serverSide": true,
+                    "processing": true,
+                    "ajax": {
+                        "url": "@Url.Action("GetErrors","ResultTable")",
+                        "type": "POST"
+                    },
+                    "columns": [
+                        { "title": "ID", "data": "Id"},
+                        { "title": "Script", "data": "Script" },
+                        {
+                            "title": "Url", "data": "Url", "render": function (data, type, row, meta) {
+                            return '<a href="' + row.Url + '">' + data + '</a>';
+                        }},
+                        { "title": "Поле", "data": "Field"},
+                        {
+                            "title": "Дата появления", "data": "DateException", render: function (data, type, row, meta) {
+                                return ToJavaScriptDate(data);
+                            }},
+                        {
+                            "title": "Дата изменения", "data": "DateEdit", render: function (data, type, row, meta) {
+                                return ToJavaScriptDate(data);
+                            }},
+                        { "title": "Разработчик", "data": "Developer" },
+                        { "title": "Исправленно", "data": "Corrected" },
+                        { "title": "Число", "data": "Counter"},
+                        {
+                            "title": "Тип ошибки", "data": "TypeError", render: function (data, type, row, meta) {
+                                if (data === 0) {
+                                    return "Обязательная колонка пустая";
+                                }
+                                if (data === 1) {
+                                    return "Обязательное колонка имеет пустые значения";
+                                }
+                                if (data === 2) {
+                                    return "Ошибка коррекции";
+                                }
+                                if (data === 3) {
+                                    return "Есть пустые значения в колонке";
+                                }
+                                if (data === 4) {
+                                    return "Больше чем 1-но слово";
+                                }
+                                if (data === 5) {
+                                    return "Колонка пустая";
+                                }
+                                if (data === 6) {
+                                    return "Ошибка коррекции в Обязательном поле";
+                                }
+                        }}
+                    ],
+                    "AutoWidth": false,
+                    "order": [[0, "desc"]],
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "select": true,
+                    "rowCallback": function (row, data) {
+                        if ($.inArray(data.Id, selected) !== -1) {
+                            $(row).addClass('selected');
+                        }
+                    }
+                });
+            }
+        }
+        function ToJavaScriptDate(value) {
+            if (value == null)
+                return "";
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            if (results == null)
+                return "";
+            var dt = new Date(parseFloat(results[1]));
+            var year = dt.getFullYear();
+            var month = dt.getMonth() + 1;
+            var day = dt.getDate();
+            return (year + "." + month + "." + day);
+        }
+
+// initialize the datatables
+        assetListVM.init();
+
+    });
+
+
+</script> 

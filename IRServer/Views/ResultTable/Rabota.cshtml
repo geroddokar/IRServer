@@ -1,0 +1,259 @@
+﻿@using IRServer.Models
+@model IRServer.Models.ResultRabotaListViewModel
+
+@{
+    ViewBag.Title = "Работа";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Работа</h2>
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm("Rabota", "ResultTable", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "myForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(m => Model.Filters.CurrentPage)
+            <div class="form-group">
+                @Html.Label("Вакансия", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Vakansia, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Vakansia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Зарплата От", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.ZpOt, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.ZpOt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Зарплата До", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.ZpDo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.ZpDo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Описание", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Discription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Discription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Требование", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Trebovanie, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Trebovanie, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Условия", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Usloviya, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Usloviya, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Тип занятости", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.TipZanyatosri, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.TipZanyatosri, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Адрес", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Adress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Adress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Опыт работы", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.OpitRaboti, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.OpitRaboti, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Город", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Gorod, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Gorod, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Контакты", new {@class = "col-md-2 control-label"})
+                <div class="col-md-10 col-sm-offset-2">
+                    @Html.CheckBoxFor(m => Model.Filters.Contacts, new { @class = "form-check-input" })
+                        
+                    @Html.ValidationMessageFor(m => Model.Filters.Contacts, "", new {@class = "text-danger"})
+                   
+                  
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Оброзование", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Obrozovanie, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Obrozovanie, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Работодатель", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Rabotodatel, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Rabotodatel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Дата создания от", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.DateOfChangeFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.DateOfChangeFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Дата создания до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.DateOfChangeTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.DateOfChangeTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Сайт", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Site, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Site, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Показать" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-8">
+        <ul class="list-unstyled">
+            @foreach (var p in Model.Results)
+            {
+                <li class="media">
+                    @*<img class="resultphoto rounded float-left mr-3" src="@p.Photo" />*@
+                    <div class="media-body">
+                        <div class="row">
+
+                            <div class="wrapper">
+                                <div class="box photo">
+                                    
+                                </div>
+                                <div class="box source">
+                                    <div>
+                                        Источник:<a href="@p.UrlString"> <span>@p.Site</span></a>
+                                    </div>
+                                </div>
+                                <div class="box date">
+                                    @if (@p.DateCreate != null)
+                                    {<span>@p.DateCreate.Value.ToString("d")</span>}
+
+                                </div>
+                                <div class="box price">
+
+                                    @if (p.ZpOt > 0 && p.ZpDo <= 0)
+                                    {
+                                        <b> от @p.ZpOt руб.</b>
+                                    }
+                                    else
+                                    {
+                                        if (p.ZpOt <= 0 && p.ZpDo > 0)
+                                        {
+                                            <b> до @p.ZpDo руб.</b>
+                                        }
+                                        else
+                                        {
+                                            if (p.ZpOt > 0 && p.ZpDo > 0)
+                                            {
+                                                <b> @p.ZpDo - @p.ZpDo руб.</b>
+                                            }
+                                            else
+                                            {
+                                                <b> Нет </b>
+                                            }
+                                        }
+                                    }
+                                </div>
+                                <div class="box marka"><h4><a href="@p.UrlString"> @p.Vakansia</a></h4></div>
+                                <div class="box desc">
+                                    @if (@p.Discription != null)
+                                    {<span>@p.Discription </span>}
+
+                                    @if (@p.Usloviya != null)
+                                    {<br /><span>@p.Usloviya</span>}
+
+                                    @if (@p.TipZanyatosri != null)
+                                    {<br /><span>@p.TipZanyatosri</span>}
+                                    @if (@p.OpitRaboti != null)
+                                    {<br /><span>@p.OpitRaboti</span>}
+                                    @if (@p.Obrozovanie != null)
+                                    {<br /><span>@p.Obrozovanie</span>}
+                                    @if (@p.Rabotodatel != null)
+                                    {<br /><span>@p.Rabotodatel</span>}
+                                </div>
+                                <div class="box cont">@p.Gorod, @p.Adress</div>
+                                <div class="box cont">@p.Contacts</div>
+                            </div>
+
+
+                            @*<div class="col-8">
+                                    <div>
+                                        Источник: <span>@p.Site</span>
+                                    </div>
+                                    <h4 class="mt-0  mb-1">@p.Marka</h4>
+                                    <div class="wrap">
+                                        <ol>
+                                            <li> @p.Year</li>
+                                            <li> @p.Probeg</li>
+                                            <li> @p.Kuzov</li>
+                                            <li> @p.KPP</li>
+                                            <li> @p.Dvigatel</li>
+                                            <li> @p.Obem</li>
+                                            <li> @p.Color</li>
+                                            <li> @p.Privod</li>
+                                            <li> @p.Power</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h4>@p.Price</h4>
+                                </div>*@
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="pagination">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Rabota", new { page = x }))
+        </div>
+    </div>
+    <div class="col">
+
+    </div>
+</div>
+
+<script>
+
+    window.onload = function () {
+        var anchors = document.getElementsByClassName('page-link');
+        for (var i = 0; i < anchors.length; i++) {
+            var anchor = anchors[i];
+            anchor.onclick = function () {
+                console.log(this);
+                document.getElementById('Filters_CurrentPage').value = this.innerText;
+                document.getElementById("myForm").submit();
+            }
+        }
+    }
+</script>

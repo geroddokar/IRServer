@@ -1,0 +1,18 @@
+namespace IRServer.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class catparentId : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Categories", "ParentId", c => c.Int(nullable: false));
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.Categories", "ParentId");
+        }
+    }
+}
