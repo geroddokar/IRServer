@@ -34,14 +34,7 @@ namespace IrobusHelpLib
         public override string ToString()
         {
             var txt = "";
-            if(Photo)
-            {
-                txt += "Фото: Есть,";
-            }
-            else
-            {
-                txt += "Фото: Нет,";
-            }
+            txt += Photo ? "Фото: Есть," : "Фото: Нет,";
             if (!string.IsNullOrEmpty(Marka))
             {
                 txt += $"Марка: {Marka},";
