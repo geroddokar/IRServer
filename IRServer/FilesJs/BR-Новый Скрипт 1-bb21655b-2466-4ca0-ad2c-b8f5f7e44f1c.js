@@ -12,13 +12,13 @@ function DOMtoString(data) {
 {//Чтение колонки Discription
 var selectorBlockDiscription = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemDiscription = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-container--_4ZtZ.c6e8ba5398-info-section--28o47';
-var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText'); 
+var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText', 'Discription'); 
 //Добавление в таблицу данные колонки Discription
 AddToArray(Discription, "Discription");
 //Чтение колонки Price
 var selectorBlockPrice = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemPrice = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(2) > div > div.c6e8ba5398-header--6WXYW';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText'); 
+var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
 //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Коррекция для поля Price
@@ -29,7 +29,7 @@ AddToArray(Price, "Price");
 //Чтение колонки PriceM
 var selectorBlockPriceM = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemPriceM = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(2) > div > div.c6e8ba5398-term--39cia';
-var PriceM = ReadData(data, selectorBlockPriceM, selectorItemPriceM, 'InnerText'); 
+var PriceM = ReadData(data, selectorBlockPriceM, selectorItemPriceM, 'InnerText', 'PriceM'); 
 //Добавление в таблицу данные колонки PriceM
 AddToArray(PriceM, "PriceM");
 //Коррекция для поля PriceM
@@ -40,19 +40,19 @@ AddToArray(PriceM, "PriceM");
 //Чтение колонки UrlString
 var selectorBlockUrlString = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemUrlString = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(1) > a';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Photo
 var selectorBlockPhoto = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemPhoto = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-media--3ydLy > div > div > div > div.c6e8ba5398-container--27xlO > div > div > div > img';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src'); 
+var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src', 'Photo'); 
 //Добавление в таблицу данные колонки Photo
 AddToArray(Photo, "Photo");
 //Чтение колонки Etag
 var selectorBlockEtag = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemEtag = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(1) > a > div';
-var Etag = ReadData(data, selectorBlockEtag, selectorItemEtag, 'InnerText'); 
+var Etag = ReadData(data, selectorBlockEtag, selectorItemEtag, 'InnerText', 'Etag'); 
 //Добавление в таблицу данные колонки Etag
 AddToArray(Etag, "Etag");
 //Коррекция для поля Etag
@@ -68,7 +68,7 @@ AddToArray(Etag, "Etag");
 //Чтение колонки AreaAll
 var selectorBlockAreaAll = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemAreaAll = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(1) > a > div';
-var AreaAll = ReadData(data, selectorBlockAreaAll, selectorItemAreaAll, 'InnerText'); 
+var AreaAll = ReadData(data, selectorBlockAreaAll, selectorItemAreaAll, 'InnerText', 'AreaAll'); 
 //Добавление в таблицу данные колонки AreaAll
 AddToArray(AreaAll, "AreaAll");
 //Коррекция для поля AreaAll
@@ -84,13 +84,13 @@ AddToArray(AreaAll, "AreaAll");
 //Чтение колонки Adress
 var selectorBlockAdress = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemAdress = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div:nth-child(2) > div > div.c6e8ba5398-address-links--1I9u5';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Чтение колонки CountRoom
 var selectorBlockCountRoom = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemCountRoom = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(1) > a > div';
-var CountRoom = ReadData(data, selectorBlockCountRoom, selectorItemCountRoom, 'InnerText'); 
+var CountRoom = ReadData(data, selectorBlockCountRoom, selectorItemCountRoom, 'InnerText', 'CountRoom'); 
 //Добавление в таблицу данные колонки CountRoom
 AddToArray(CountRoom, "CountRoom");
 //Коррекция для поля CountRoom
@@ -101,29 +101,29 @@ AddToArray(CountRoom, "CountRoom");
 //Чтение колонки Contacts
 var selectorBlockContacts = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemContacts = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-panels-container--1q3my > div.c6e8ba5398-left-panel--FeMiG > div:nth-child(1) > div > div';
-var Contacts = ReadData(data, selectorBlockContacts, selectorItemContacts, 'InnerText'); 
+var Contacts = ReadData(data, selectorBlockContacts, selectorItemContacts, 'InnerText', 'Contacts'); 
 //Добавление в таблицу данные колонки Contacts
 AddToArray(Contacts, "Contacts");
 //Чтение колонки DateCreate
 var selectorBlockDateCreate = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemDateCreate = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-panels-container--1q3my > div.c6e8ba5398-right-panel--1jH8A > div.c6e8ba5398-time--3Pos8 > div > div.c6e8ba5398-absolute--2Znfs';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Текст", DateCreate, -99, /сегодня.*/g, "Нет","12.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /сегодня.*/g, "Text","12.06.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Текст", DateCreate, -99, /вчера.*/g, "Нет","11.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /вчера.*/g, "Text","11.06.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Чтение колонки CountFloor
 var selectorBlockCountFloor = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemCountFloor = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div.c6e8ba5398-main-info--Rfnfh > div:nth-child(1) > a > div';
-var CountFloor = ReadData(data, selectorBlockCountFloor, selectorItemCountFloor, 'InnerText'); 
+var CountFloor = ReadData(data, selectorBlockCountFloor, selectorItemCountFloor, 'InnerText', 'CountFloor'); 
 //Добавление в таблицу данные колонки CountFloor
 AddToArray(CountFloor, "CountFloor");
 //Коррекция для поля CountFloor
@@ -139,9 +139,21 @@ AddToArray(CountFloor, "CountFloor");
 //Чтение колонки Metro
 var selectorBlockMetro = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
 var selectorItemMetro = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div:nth-child(2) > div > div.c6e8ba5398-underground-container--2qdnY > a > div.c6e8ba5398-underground-name--2L8eg';
-var Metro = ReadData(data, selectorBlockMetro, selectorItemMetro, 'InnerText'); 
+var Metro = ReadData(data, selectorBlockMetro, selectorItemMetro, 'InnerText', 'Metro'); 
 //Добавление в таблицу данные колонки Metro
 AddToArray(Metro, "Metro");
+//Чтение колонки Contacts
+var selectorBlockContacts = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
+var selectorItemContacts = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-agent--yl6xA > div > div';
+var Contacts = ReadData(data, selectorBlockContacts, selectorItemContacts, 'InnerText', 'Contacts'); 
+//Добавление в таблицу данные колонки Contacts
+AddToArray(Contacts, "Contacts");
+//Чтение колонки Gorod
+var selectorBlockGorod = '#frontend-serp > div > div._93444fe79c-wrapper--1Z8Nz > div';
+var selectorItemGorod = 'div > div.c6e8ba5398-container--3zR_Z > div > div.c6e8ba5398-main--2ljgO > div.c6e8ba5398-info-container--2PGrN > div.c6e8ba5398-info--3P6sA > div:nth-child(2) > div > div.c6e8ba5398-address-links--1I9u5 > div:nth-child(2) > a';
+var Gorod = ReadData(data, selectorBlockGorod, selectorItemGorod, 'InnerText', 'Gorod'); 
+//Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
 };
 
 
@@ -158,7 +170,7 @@ AddToArray(Metro, "Metro");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -179,7 +191,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }
@@ -264,7 +276,7 @@ function TypeTemplateRegexSymbol(fieldSource, index, searchTemplate, typeReplace
                             replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.getDate();
+                            replace = date.getTime()
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
                                 resultList.push(matches[index]);
@@ -320,8 +332,8 @@ function TypeTemplateTextSymbol(fieldSource, index, searchTemplate, typeReplace,
 
                             replace = date.setDate(date.getDate() - 1);;
                         }
-                        if (typeReplace.indexOf("СеYearня") >= 0)
-                            replace = date.getDate();
+                        if (typeReplace.indexOf("Сегодня") >= 0)
+                            replace = date.getTime()
 
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
@@ -407,7 +419,7 @@ function SeparatorTextSymbol(fieldSource, index, searchTemplate) {
             if (matches.length > index)
                 resultList.push(matches[index]);
             else {
-                resultList.push(matches.FirstOrDefault());
+                resultList.push("");
             }
         }
         return resultList;

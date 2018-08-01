@@ -39,19 +39,18 @@ namespace IRServer.Controllers
             try
             {
                 var scripts = new List<Script>();
-                var listId = new List<int>();
-                foreach (var reg in ctx.RegexUrlToScripts)
+                foreach (var script in ctx.Scripts)
                 {
-                    if (reg.RegexText != null)
+                    if (script.RegexUrl != null)
                     {
                         try
                         {
-                            var rg = new Regex(reg.RegexText);
+                            var rg = new Regex(script.RegexUrl);
                             if (!rg.IsMatch(scriptUrl.Url))
                                 continue;
                             else
                             {
-                                listId.Add(reg.ScriptID);
+                                scripts.Add(script);
 
                             }
                         }
@@ -62,10 +61,6 @@ namespace IRServer.Controllers
                         }
 
                     }
-                }
-                foreach (var i in listId)
-                {
-                    scripts.Add(ctx.Scripts.FirstOrDefault(s => s.ID == i));
                 }
                 if (scripts.Count == 0)
                 {

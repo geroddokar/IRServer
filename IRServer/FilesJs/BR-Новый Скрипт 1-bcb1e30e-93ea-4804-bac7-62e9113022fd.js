@@ -12,13 +12,13 @@ function DOMtoString(data) {
 {//Чтение колонки Marka
 var selectorBlockMarka = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemMarka = 'a > header > div.advertisements__item-caption > div > span:nth-child(1)';
-var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText'); 
+var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText', 'Marka'); 
 //Добавление в таблицу данные колонки Marka
 AddToArray(Marka, "Marka");
 //Чтение колонки Price
 var selectorBlockPrice = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemPrice = 'a > div.advertisements__item-price.vertical-align-middle > div';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText'); 
+var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
 //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Коррекция для поля Price
@@ -29,19 +29,19 @@ AddToArray(Price, "Price");
 //Чтение колонки UrlString
 var selectorBlockUrlString = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemUrlString = 'a ';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Photo
 var selectorBlockPhoto = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemPhoto = 'a > header > div.advertisements__item-photo > div > img';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src'); 
+var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src', 'Photo'); 
 //Добавление в таблицу данные колонки Photo
 AddToArray(Photo, "Photo");
 //Чтение колонки Probeg
 var selectorBlockProbeg = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemProbeg = 'a > div.advertisements__item-description.vertical-align-middle > div';
-var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText'); 
+var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText', 'Probeg'); 
 //Добавление в таблицу данные колонки Probeg
 AddToArray(Probeg, "Probeg");
 //Коррекция для поля Probeg
@@ -62,25 +62,25 @@ AddToArray(Probeg, "Probeg");
 //Чтение колонки Year
 var selectorBlockYear = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemYear = 'a > header > div.advertisements__item-caption > div > span:nth-child(3) > span:nth-child(1)';
-var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText'); 
+var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText', 'Year'); 
 //Добавление в таблицу данные колонки Year
 AddToArray(Year, "Year");
 //Чтение колонки DateCreate
 var selectorBlockDateCreate = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemDateCreate = 'a > div.advertisements__item-city.vertical-align-middle > div > time';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Чтение колонки Kuzov
 var selectorBlockKuzov = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemKuzov = 'a > header > div.advertisements__item-caption > div > span:nth-child(2)';
-var Kuzov = ReadData(data, selectorBlockKuzov, selectorItemKuzov, 'InnerText'); 
+var Kuzov = ReadData(data, selectorBlockKuzov, selectorItemKuzov, 'InnerText', 'Kuzov'); 
 //Добавление в таблицу данные колонки Kuzov
 AddToArray(Kuzov, "Kuzov");
 //Чтение колонки KPP
 var selectorBlockKPP = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemKPP = 'a > div.advertisements__item-description.vertical-align-middle > div';
-var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText'); 
+var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText', 'KPP'); 
 //Добавление в таблицу данные колонки KPP
 AddToArray(KPP, "KPP");
 //Коррекция для поля KPP
@@ -91,7 +91,7 @@ AddToArray(KPP, "KPP");
 //Чтение колонки Dvigatel
 var selectorBlockDvigatel = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemDvigatel = 'a > div.advertisements__item-description.vertical-align-middle > div';
-var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText'); 
+var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText', 'Dvigatel'); 
 //Добавление в таблицу данные колонки Dvigatel
 AddToArray(Dvigatel, "Dvigatel");
 //Коррекция для поля Dvigatel
@@ -102,7 +102,7 @@ AddToArray(Dvigatel, "Dvigatel");
 //Чтение колонки Obem
 var selectorBlockObem = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemObem = 'a > div.advertisements__item-description.vertical-align-middle > div';
-var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText'); 
+var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText', 'Obem'); 
 //Добавление в таблицу данные колонки Obem
 AddToArray(Obem, "Obem");
 //Коррекция для поля Obem
@@ -115,10 +115,15 @@ var Obem = Array.from(tableObj, x => x.Obem).reverse();
 Obem = RunRule("Регулярное выражение", Obem, 0, /\d+(\,\d+)?/g, "Нет","");
  //Добавление в таблицу данные колонки Obem
 AddToArray(Obem, "Obem");
+//Коррекция для поля Obem
+var Obem = Array.from(tableObj, x => x.Obem).reverse();
+Obem = RunRule("Текст", Obem, -99, /л/g, "Text","");
+ //Добавление в таблицу данные колонки Obem
+AddToArray(Obem, "Obem");
 //Чтение колонки Privod
 var selectorBlockPrivod = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemPrivod = 'a > div.advertisements__item-description.vertical-align-middle > div';
-var Privod = ReadData(data, selectorBlockPrivod, selectorItemPrivod, 'InnerText'); 
+var Privod = ReadData(data, selectorBlockPrivod, selectorItemPrivod, 'InnerText', 'Privod'); 
 //Добавление в таблицу данные колонки Privod
 AddToArray(Privod, "Privod");
 //Коррекция для поля Privod
@@ -129,9 +134,15 @@ AddToArray(Privod, "Privod");
 //Чтение колонки Adress
 var selectorBlockAdress = '#serp > div.grid__column--main.gap-right-large > section > div > div';
 var selectorItemAdress = 'a > div.advertisements__item-city.vertical-align-middle > div > span';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
+//Чтение колонки Gorod
+var selectorBlockGorod = '#serp > div.grid__column--main.gap-right-large > section > div > div';
+var selectorItemGorod = 'a > div.advertisements__item-city.vertical-align-middle > div > span';
+var Gorod = ReadData(data, selectorBlockGorod, selectorItemGorod, 'InnerText', 'Gorod'); 
+//Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
 };
 
 
@@ -148,7 +159,7 @@ AddToArray(Adress, "Adress");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -169,7 +180,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }
@@ -251,11 +262,10 @@ function TypeTemplateRegexSymbol(fieldSource, index, searchTemplate, typeReplace
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getTime()
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
                                 resultList.push(matches[index]);
@@ -308,11 +318,11 @@ function TypeTemplateTextSymbol(fieldSource, index, searchTemplate, typeReplace,
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getTime()
 
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)

@@ -134,6 +134,17 @@ namespace IRServer.Controllers
                 {
                     avtoTable = avtoTable.Where(t => t.Power <= filter.Filters.PowerTo);
                 }
+
+                if (filter.Filters.DateOfCreateFrom > DateTime.MinValue)
+                {
+                    avtoTable = avtoTable.Where(t => t.DateCreate >= filter.Filters.DateOfCreateFrom);
+                }
+
+                if (filter.Filters.DateOfCreateTo > DateTime.MinValue)
+                {
+                    avtoTable = avtoTable.Where(t => t.DateCreate <= filter.Filters.DateOfCreateTo);
+                }
+
                 avtoTable = avtoTable.Where(t => t.Price >= filter.Filters.PriceFrom);
                 avtoTable = avtoTable.Where(t => t.Year >= filter.Filters.YearFrom);
                 avtoTable = avtoTable.Where(t => t.Probeg >= filter.Filters.ProbegFrom);
@@ -226,13 +237,14 @@ namespace IRServer.Controllers
                 {
                     avtoTable = avtoTable.Where(t => t.Site.Contains(filter.Filters.Site));
                 }
-                if (filter.Filters.DateOfChangeFrom != null)
+                if (filter.Filters.DateOfCreateFrom > DateTime.MinValue)
                 {
-                    avtoTable = avtoTable.Where(t => t.DateCreate >= filter.Filters.DateOfChangeFrom);
+                    avtoTable = avtoTable.Where(t => t.DateCreate >= filter.Filters.DateOfCreateFrom);
                 }
-                if (filter.Filters.DateOfChangeTo!= null)
+
+                if (filter.Filters.DateOfCreateTo > DateTime.MinValue)
                 {
-                    avtoTable = avtoTable.Where(t => t.DateCreate <= filter.Filters.DateOfChangeTo);
+                    avtoTable = avtoTable.Where(t => t.DateCreate <= filter.Filters.DateOfCreateTo);
                 }
                 var avto = avtoTable.ToList();
 
@@ -251,6 +263,179 @@ namespace IRServer.Controllers
             return View(filter);
         }
 
+        public ViewResult Nedvigimost(ResultNedvListViewModel filter)
+        {
+            if (filter.Filters == null)
+                filter = new ResultNedvListViewModel() { Filters = new NedvigimostFilters() { CurrentPage = 1 } };
+            if (filter.Filters.CurrentPage == 0)
+                filter.Filters.CurrentPage = 1;
+            filter.Results = new List<Nedvigimost>();
+            filter.PagingInfo = new PagingInfo() { CurrentPage = filter.Filters.CurrentPage, ItemsPerPage = PageSize, TotalItems = 0 };
+            try
+            {
+                var user = User.Identity.GetUserName();
+                if (string.IsNullOrEmpty(user))
+                {
+                    return View(filter);
+                }
+
+
+                var avtoTable = (from table in ctx.Nedvigimosts where table.User == user select table);
+
+                if (!string.IsNullOrEmpty(filter.Filters.Balkon))
+                {
+                    avtoTable = avtoTable.Where(t => t.Balkon.Contains(filter.Filters.Balkon));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.Discription))
+                {
+                    avtoTable = avtoTable.Where(t => t.Discription.Contains(filter.Filters.Discription));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.Lift))
+                {
+                    avtoTable = avtoTable.Where(t => t.Lift.Contains(filter.Filters.Lift));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.Metro))
+                {
+                    avtoTable = avtoTable.Where(t => t.Metro.Contains(filter.Filters.Metro));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.Remont))
+                {
+                    avtoTable = avtoTable.Where(t => t.Remont.Contains(filter.Filters.Remont));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.Adress))
+                {
+                    avtoTable = avtoTable.Where(t => t.Adress.Contains(filter.Filters.Adress));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.Sanuzel))
+                {
+                    avtoTable = avtoTable.Where(t => t.Sanuzel.Contains(filter.Filters.Sanuzel));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.SdachaGk))
+                {
+                    avtoTable = avtoTable.Where(t => t.Gorod.Contains(filter.Filters.SdachaGk));
+                }
+
+                if (!string.IsNullOrEmpty(filter.Filters.TypeHouse))
+                {
+                    avtoTable = avtoTable.Where(t => t.TypeHouse.Contains(filter.Filters.TypeHouse));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.TypeSale))
+                {
+                    avtoTable = avtoTable.Where(t => t.TypeSale.Contains(filter.Filters.TypeSale));
+                }
+                if (!string.IsNullOrEmpty(filter.Filters.VidIzOkna))
+                {
+                    avtoTable = avtoTable.Where(t => t.VidIzOkna.Contains(filter.Filters.VidIzOkna));
+                }
+
+                if (filter.Filters.Photo)
+                {
+                    avtoTable = avtoTable.Where(t => !string.IsNullOrEmpty(t.Photo));
+                }
+
+                if (filter.Filters.AreaAllTo>0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaAll <= filter.Filters.AreaAllTo);
+                }
+                if (filter.Filters.AreaKyhnyaTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaKyhnya <= filter.Filters.AreaKyhnyaTo);
+                }
+                if (filter.Filters.AreaLifeTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaLife <= filter.Filters.AreaLifeTo);
+                }
+                if (filter.Filters.AreaRoomTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaRoom <= filter.Filters.AreaRoomTo);
+                }
+                if (filter.Filters.CountFloorTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.CountFloor <= filter.Filters.CountFloorTo);
+                }
+                if (filter.Filters.CountRoomTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.CountRoom <= filter.Filters.CountRoomTo);
+                }
+                if (filter.Filters.EtagTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.Etag <= filter.Filters.EtagTo);
+                }
+                if (filter.Filters.PriceMTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.PriceM <= filter.Filters.PriceMTo);
+                }
+                if (filter.Filters.PriceTo > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.Price <= filter.Filters.PriceTo);
+                }
+
+                if (filter.Filters.AreaAllFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaAll >= filter.Filters.AreaAllFrom);
+                }
+                if (filter.Filters.AreaKyhnyaFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaKyhnya >= filter.Filters.AreaKyhnyaFrom);
+                }
+                if (filter.Filters.AreaLifeFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaLife >= filter.Filters.AreaLifeFrom);
+                }
+                if (filter.Filters.AreaRoomFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.AreaRoom >= filter.Filters.AreaRoomFrom);
+                }
+                if (filter.Filters.CountFloorFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.CountFloor >= filter.Filters.CountFloorFrom);
+                }
+                if (filter.Filters.CountRoomFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.CountRoom >= filter.Filters.CountRoomFrom);
+                }
+                if (filter.Filters.EtagFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.Etag >= filter.Filters.EtagFrom);
+                }
+                if (filter.Filters.PriceMFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.PriceM >= filter.Filters.PriceMFrom);
+                }
+                if (filter.Filters.PriceFrom > 0)
+                {
+                    avtoTable = avtoTable.Where(t => t.Price >= filter.Filters.PriceFrom);
+                }
+
+
+                if (filter.Filters.DateOfCreateFrom > DateTime.MinValue)
+                {
+                    avtoTable = avtoTable.Where(t => t.DateCreate >= filter.Filters.DateOfCreateFrom);
+                }
+
+                if (filter.Filters.DateOfCreateTo > DateTime.MinValue)
+                {
+                    avtoTable = avtoTable.Where(t => t.DateCreate <= filter.Filters.DateOfCreateTo);
+                }
+
+
+
+                var avto = avtoTable.ToList();
+
+                filter.Results = avto.Skip((filter.Filters.CurrentPage - 1) * PageSize).Take(PageSize);
+                filter.PagingInfo = new PagingInfo
+                {
+                    CurrentPage = filter.Filters.CurrentPage,
+                    ItemsPerPage = PageSize,
+                    TotalItems = avto.Count()
+                };
+            }
+            catch (Exception e)
+            {
+
+            }
+            return View(filter);
+        }
 
         public IrobusModel ctx = new IrobusModel();
         [System.Web.Http.Authorize]

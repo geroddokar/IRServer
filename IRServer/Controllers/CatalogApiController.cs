@@ -16,10 +16,18 @@ namespace IRServer.Controllers
 
         [System.Web.Http.HttpGet]
         // GET: api/CatalogApi/Get
-        public IEnumerable<Category> Get()
+        public IEnumerable<Category> Get(string userName)
         {
-            return ctx.Categorys.OrderBy(t => t.Name);
+            if (userName == null)
+            {
+                return ctx.Categorys.Where(s => string.IsNullOrEmpty(s.UserId)).OrderBy(t => t.Name);
+            }
+            var user = ctx.Users.FirstOrDefault(u => u.UserName == userName);
+            return user != null ? ctx.Categorys.Where(s => s.UserId == user.Id || string.IsNullOrEmpty(s.UserId)).OrderBy(t => t.Name) 
+                : ctx.Categorys.Where(s => string.IsNullOrEmpty(s.UserId)).OrderBy(t => t.Name);
         }
+
+
 
         [System.Web.Http.HttpGet]
         // GET: api/CatalogApi/Get/5

@@ -1,0 +1,152 @@
+﻿@model IrobusHelpLib.RequestObj
+
+@{
+    ViewBag.Title = "Создание спроса";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Создание спроса</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Create", "Request", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Укажите рубрику", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.ResultTable, ViewBag.ResultTableList as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ResultTable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Цена от", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.TypeAvto.PriceFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.TypeAvto.PriceFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.Marka, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.Marka, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.Marka, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.PriceFrom, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.PriceFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.PriceFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.PriceTo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.PriceTo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.PriceTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.Kpp, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.Kpp, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.Kpp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.Dvigatel, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.Dvigatel, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.Dvigatel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.Color, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.Color, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.Color, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.YearFrom, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.YearFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.YearFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.YearTo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.YearTo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.YearTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.ProbegFrom, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.ProbegFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.ProbegFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.ProbegTo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.ProbegTo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.ProbegTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.Kuzov, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.Kuzov, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.Kuzov, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.ObemFrom, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.ObemFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.ObemFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.ObemTo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.ObemTo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.ObemTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.Privod, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.Privod, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.Privod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.PowerFrom, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.PowerFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.PowerFrom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => Model.TypeAvto.PowerTo, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => Model.TypeAvto.PowerTo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => Model.TypeAvto.PowerTo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>

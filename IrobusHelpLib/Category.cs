@@ -12,6 +12,14 @@ namespace IrobusHelpLib
         public string Name { get; set; }
         public string Url { get; set; }
         public int ParentId { get; set; }
+        public string UserId { get; set; }
     }
 
+
+    public class DropListCategory
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string ParentName { get; set; }
+    }
 }

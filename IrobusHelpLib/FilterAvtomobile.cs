@@ -8,6 +8,8 @@ namespace IrobusHelpLib
 
     public class BaseFilterModel
     {
+        public DateTime? DateOfCreateFrom { get; set; }
+        public DateTime? DateOfCreateTo { get; set; }
         public int CurrentPage { get; set; }
     }
 
@@ -39,27 +41,76 @@ namespace IrobusHelpLib
             {
                 txt += $"Марка: {Marka},";
             }
+
+            if (PriceFrom > 0)
+            {
+                txt += $"от {PriceFrom} рубл., ";
+            }
+            if (PriceTo > 0)
+            {
+                txt += $"до {PriceFrom} рубл., ";
+            }
+
+            if (YearFrom > 0)
+            {
+                txt += $"от {YearFrom} г., ";
+            }
+            if (YearTo > 0)
+            {
+                txt += $"до {YearTo} г., ";
+            }
+
+            if (PowerFrom > 0)
+            {
+                txt += $"от {PowerFrom} л.с., ";
+            }
+            if (PowerTo > 0)
+            {
+                txt += $"до {PowerTo} л.с., ";
+            }
+
+            if (ProbegFrom > 0)
+            {
+                txt += $"от {ProbegFrom} км., ";
+            }
+            if (ProbegTo > 0)
+            {
+                txt += $"до {ProbegTo} км., ";
+            }
+
+            if (ObemFrom > 0)
+            {
+                txt += $"до {ObemFrom} л., ";
+            }
+
+            if (ObemTo > 0)
+            {
+                txt += $"до {ObemTo} л., ";
+            }
+
             if (!string.IsNullOrEmpty(Kpp))
             {
-                txt += $"КПП: {Kpp},";
+                txt += $"КПП: {Kpp}, ";
             }
             if (!string.IsNullOrEmpty(Dvigatel))
             {
-                txt += $"{Dvigatel},";
+                txt += $"{Dvigatel}, ";
             }
             if (!string.IsNullOrEmpty(Kuzov))
             {
-                txt += $"{Kuzov},";
+                txt += $"{Kuzov}, ";
             }
             if (!string.IsNullOrEmpty(Privod))
             {
-                txt += $"{Privod},";
+                txt += $"{Privod}, ";
             }
             if (!string.IsNullOrEmpty(Color))
             {
-                txt += $"{Color},";
+                txt += $"{Color}, ";
             }
-            
+            int place = txt.LastIndexOf(", ", StringComparison.Ordinal);
+            if(place>0)
+                txt = txt.Remove(place, 2).Insert(place, "");
             return $"Куплю: {txt}";
         }
 
@@ -81,8 +132,7 @@ namespace IrobusHelpLib
         public bool Contacts { get; set; }
         public string Obrozovanie { get; set; }
         public string Rabotodatel { get; set; }
-        public DateTime? DateOfChangeFrom { get; set; }
-        public DateTime? DateOfChangeTo { get; set; }
+       
         public string Site { get; set; }
        
     }
@@ -120,10 +170,6 @@ namespace IrobusHelpLib
         public int? CountFloorFrom { get; set; }
         public int? CountFloorTo { get; set; }
         public string Metro { get; set; }
-        public DateTime DateOfChangeFrom { get; set; }
-        public DateTime DateOfChangeTo { get; set; }
         public string Site { get; set; }
-        
-
     }
 }

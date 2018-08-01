@@ -1,0 +1,28 @@
+﻿@model IrobusHelpLib.RequestObj
+
+@{
+  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div>
+    <div class="media">
+        <img class="resultphoto rounded float-left mr-3" src="@Model.Photo" />
+        <div class="media-body">
+            <div class="row">
+
+                <div class="wrapper">
+                    <div class="box photo">
+                        <img class="resultphoto rounded float-left mr-3" src="@Model.Photo" />
+                    </div>
+                    <div class="box desc">
+                        <span>@Model.TypeAvto.ToString() г.</span>
+                    </div>
+                    <div class="box cont">@Model.DateCreate</div>
+                    <div class="box cont">@Model.AllMessage</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

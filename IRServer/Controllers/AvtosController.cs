@@ -111,12 +111,11 @@ namespace IRServer.Controllers
                         {
                             var str = EncodeString($"{rabota.UrlString}");
                             rabota.MD5 = str;
-                            if (!value.isDubl)
-                                if (ctx.Rabotas.Any(t => t.MD5 == str))
-                                {
-                                    countRes = countRes - 1;
-                                    continue;
-                                }
+                            if (ctx.Rabotas.Any(t => t.MD5 == str))
+                            {
+                                var s = ctx.Rabotas.Where(t => t.MD5 == str);
+                                ctx.Rabotas.RemoveRange(s);
+                            }
 
                         }
                         rabota.User = userName;
@@ -281,12 +280,11 @@ namespace IRServer.Controllers
                         {
                             var str = EncodeString($"{nedvigimost.UrlString}");
                             nedvigimost.MD5 = str;
-                            if (!value.isDubl)
-                                if (ctx.Nedvigimosts.Any(t => t.MD5 == str))
-                                {
-                                    countRes = countRes - 1;
-                                    continue;
-                                }
+                            if (ctx.Nedvigimosts.Any(t => t.MD5 == str))
+                            {
+                                var s = ctx.Nedvigimosts.Where(t => t.MD5 == str);
+                                ctx.Nedvigimosts.RemoveRange(s);
+                            }
 
                         }
                         if (!string.IsNullOrEmpty(value.Url))
@@ -359,14 +357,11 @@ namespace IRServer.Controllers
                         {
                             var str = EncodeString($"{avto.UrlString}");
                             avto.MD5 = str;
-                            if (!value.isDubl)
-                                if (ctx.Avtomobiles.Any(t => t.MD5 == str))
-                                {
-                                    countRes = countRes - 1;
-                                    continue;
-                                }
-
-
+                            if (ctx.Avtomobiles.Any(t => t.MD5 == str))
+                            {
+                                var s = ctx.Avtomobiles.Where(t => t.MD5 == str);
+                                ctx.Avtomobiles.RemoveRange(s);
+                            }
                         }
                         if (!string.IsNullOrEmpty(value.Url))
                         {

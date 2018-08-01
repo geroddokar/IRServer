@@ -10,15 +10,15 @@ function DOMtoString(data) {
         
 //Колонки
 {//Чтение колонки Vakansia
-var selectorBlockVakansia = 'ul._1HH6I > li';
+var selectorBlockVakansia = 'li._1Tjoc._1SbdH.o7V2J';
 var selectorItemVakansia = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(1) > a';
-var Vakansia = ReadData(data, selectorBlockVakansia, selectorItemVakansia, 'InnerText'); 
+var Vakansia = ReadData(data, selectorBlockVakansia, selectorItemVakansia, 'InnerText', 'Vakansia'); 
 //Добавление в таблицу данные колонки Vakansia
 AddToArray(Vakansia, "Vakansia");
 //Чтение колонки ZpOt
-var selectorBlockZpOt = 'ul._1HH6I > li';
-var selectorItemZpOt = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(3) > span';
-var ZpOt = ReadData(data, selectorBlockZpOt, selectorItemZpOt, 'InnerText'); 
+var selectorBlockZpOt = 'li';
+var selectorItemZpOt = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(1) > a';
+var ZpOt = ReadData(data, selectorBlockZpOt, selectorItemZpOt, 'InnerText', 'ZpOt'); 
 //Добавление в таблицу данные колонки ZpOt
 AddToArray(ZpOt, "ZpOt");
 //Коррекция для поля ZpOt
@@ -37,9 +37,9 @@ ZpOt = RunRule("Регулярное выражение", ZpOt, -99, /\D+/g, "Te
  //Добавление в таблицу данные колонки ZpOt
 AddToArray(ZpOt, "ZpOt");
 //Чтение колонки ZpDo
-var selectorBlockZpDo = 'ul._1HH6I > li';
+var selectorBlockZpDo = 'li';
 var selectorItemZpDo = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(3) > span';
-var ZpDo = ReadData(data, selectorBlockZpDo, selectorItemZpDo, 'InnerText'); 
+var ZpDo = ReadData(data, selectorBlockZpDo, selectorItemZpDo, 'InnerText', 'ZpDo'); 
 //Добавление в таблицу данные колонки ZpDo
 AddToArray(ZpDo, "ZpDo");
 //Коррекция для поля ZpDo
@@ -63,15 +63,15 @@ ZpDo = RunRule("Регулярное выражение", ZpDo, -99, /\D+/g, "Te
  //Добавление в таблицу данные колонки ZpDo
 AddToArray(ZpDo, "ZpDo");
 //Чтение колонки UrlString
-var selectorBlockUrlString = 'ul._1HH6I > li';
+var selectorBlockUrlString = 'li';
 var selectorItemUrlString = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(1) > a';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Discription
-var selectorBlockDiscription = 'ul._1HH6I > li';
+var selectorBlockDiscription = 'li';
 var selectorItemDiscription = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(2) > div';
-var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText'); 
+var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText', 'Discription'); 
 //Добавление в таблицу данные колонки Discription
 AddToArray(Discription, "Discription");
 //Коррекция для поля Discription
@@ -85,9 +85,9 @@ Discription = RunRule("Текст", Discription, 0, /Должностные об
  //Добавление в таблицу данные колонки Discription
 AddToArray(Discription, "Discription");
 //Чтение колонки Trebovanie
-var selectorBlockTrebovanie = 'ul._1HH6I > li';
+var selectorBlockTrebovanie = 'li';
 var selectorItemTrebovanie = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(2) > div';
-var Trebovanie = ReadData(data, selectorBlockTrebovanie, selectorItemTrebovanie, 'InnerText'); 
+var Trebovanie = ReadData(data, selectorBlockTrebovanie, selectorItemTrebovanie, 'InnerText', 'Trebovanie'); 
 //Добавление в таблицу данные колонки Trebovanie
 AddToArray(Trebovanie, "Trebovanie");
 //Коррекция для поля Trebovanie
@@ -96,21 +96,21 @@ Trebovanie = RunRule("Текст", Trebovanie, -99, /.*\.Требования\:/
  //Добавление в таблицу данные колонки Trebovanie
 AddToArray(Trebovanie, "Trebovanie");
 //Чтение колонки Rabotodatel
-var selectorBlockRabotodatel = 'ul._1HH6I > li';
+var selectorBlockRabotodatel = 'li';
 var selectorItemRabotodatel = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(1)';
-var Rabotodatel = ReadData(data, selectorBlockRabotodatel, selectorItemRabotodatel, 'InnerText'); 
+var Rabotodatel = ReadData(data, selectorBlockRabotodatel, selectorItemRabotodatel, 'InnerText', 'Rabotodatel'); 
 //Добавление в таблицу данные колонки Rabotodatel
 AddToArray(Rabotodatel, "Rabotodatel");
-//Чтение колонки rod
-var selectorBlockrod = 'ul._1HH6I > li';
-var selectorItemrod = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2)';
-var rod = ReadData(data, selectorBlockrod, selectorItemrod, 'InnerText'); 
-//Добавление в таблицу данные колонки rod
-AddToArray(rod, "rod");
+//Чтение колонки Gorod
+var selectorBlockGorod = 'li';
+var selectorItemGorod = 'div > div:nth-child(2) > div > div:nth-child(1) > div > div.cllzD > div > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2)';
+var Gorod = ReadData(data, selectorBlockGorod, selectorItemGorod, 'InnerText', 'Gorod'); 
+//Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
 //Чтение колонки DateCreate
-var selectorBlockDateCreate = 'ul._1HH6I > li';
+var selectorBlockDateCreate = 'li';
 var selectorItemDateCreate = 'div > div:nth-child(1) > div > div';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 };
@@ -129,7 +129,7 @@ AddToArray(DateCreate, "DateCreate");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -150,7 +150,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }

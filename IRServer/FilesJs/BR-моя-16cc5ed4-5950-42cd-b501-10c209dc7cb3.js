@@ -1,6 +1,6 @@
 var errors = [];
 var tableObj = [];
-var scriptname = ["am.ru - Краткие данные - Новый Скрипт 1"];
+var scriptname = ["www.zarplata.ru - Краткие данные - моя1"];
 var siteName = [];
 function DOMtoString(data) {
     try {
@@ -9,156 +9,127 @@ function DOMtoString(data) {
 
         
 //Колонки
-{//Чтение колонки Marka
-var selectorBlockMarka = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemMarka = 'div > div.SerpSnippet_data__3ezjY > div.SerpSnippet_topPadding__38j6x > div.SerpSnippet_topInfo__1ZraC > div.SerpSnippet_topInfoLeft__14Csp > div.SerpSnippet_titleWrapper__38bZM > a';
-var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText', 'Marka'); 
-//Добавление в таблицу данные колонки Marka
-AddToArray(Marka, "Marka");
-//Чтение колонки Price
-var selectorBlockPrice = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemPrice = 'div > div.SerpSnippet_data__3ezjY > div.SerpSnippet_topPadding__38j6x > div.SerpSnippet_topInfo__1ZraC > div.SerpSnippet_topInfoRight__pG1ha > div > div';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
-//Добавление в таблицу данные колонки Price
-AddToArray(Price, "Price");
-//Коррекция для поля Price
-var Price = Array.from(tableObj, x => x.Price).reverse();
-Price = RunRule("Регулярное выражение", Price, -99, /\D+/g, "Text","");
- //Добавление в таблицу данные колонки Price
-AddToArray(Price, "Price");
+{//Чтение колонки Vakansia
+var selectorBlockVakansia = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemVakansia = 'div.ui.grid.vacancy-preview_2vHdM > div.ten.wide.column.info-column_REucJ > h2 > span > a > span';
+var Vakansia = ReadData(data, selectorBlockVakansia, selectorItemVakansia, 'InnerText', 'Vakansia'); 
+//Добавление в таблицу данные колонки Vakansia
+AddToArray(Vakansia, "Vakansia");
+//Чтение колонки Contacts
+var selectorBlockContacts = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemContacts = 'div.ui.grid.vacancy-preview_2vHdM > div.two.wide.column.logotype_3o74j > a';
+var Contacts = ReadData(data, selectorBlockContacts, selectorItemContacts, 'href', 'Contacts'); 
+//Добавление в таблицу данные колонки Contacts
+AddToArray(Contacts, "Contacts");
 //Чтение колонки UrlString
-var selectorBlockUrlString = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemUrlString = 'div > div.SerpSnippet_data__3ezjY > div.SerpSnippet_topPadding__38j6x > div.SerpSnippet_topInfo__1ZraC > div.SerpSnippet_topInfoLeft__14Csp > div.SerpSnippet_titleWrapper__38bZM > a';
+var selectorBlockUrlString = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemUrlString = 'div.ui.grid.vacancy-preview_2vHdM > div.ten.wide.column.info-column_REucJ > h2 > span > a';
 var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
-//Чтение колонки Probeg
-var selectorBlockProbeg = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemProbeg = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(1)';
-var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText', 'Probeg'); 
-//Добавление в таблицу данные колонки Probeg
-AddToArray(Probeg, "Probeg");
-//Коррекция для поля Probeg
-var Probeg = Array.from(tableObj, x => x.Probeg).reverse();
-Probeg = RunRule("Регулярное выражение", Probeg, -99, /\D+/g, "Text","");
- //Добавление в таблицу данные колонки Probeg
-AddToArray(Probeg, "Probeg");
-//Чтение колонки Year
-var selectorBlockYear = '#page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div > div:nth-child(1) > span > article';
-var selectorItemYear = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(4)';
-var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText', 'Year'); 
-//Добавление в таблицу данные колонки Year
-AddToArray(Year, "Year");
-//Коррекция для поля Year
-var Year = Array.from(tableObj, x => x.Year).reverse();
-Year = RunRule("Регулярное выражение", Year, -99, /\D+/g, "Text","");
- //Добавление в таблицу данные колонки Year
-AddToArray(Year, "Year");
+//Чтение колонки ZpOt
+var selectorBlockZpOt = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemZpOt = 'div.ui.grid.vacancy-preview_2vHdM > div.four.wide.column.salary-column_2za0O > div > strong > span';
+var ZpOt = ReadData(data, selectorBlockZpOt, selectorItemZpOt, 'InnerText', 'ZpOt'); 
+//Добавление в таблицу данные колонки ZpOt
+AddToArray(ZpOt, "ZpOt");
+//Коррекция для поля ZpOt
+var ZpOt = Array.from(tableObj, x => x.ZpOt).reverse();
+ZpOt = RunRule("Регулярное выражение", ZpOt, -99, /\s+/g, "Text","");
+ //Добавление в таблицу данные колонки ZpOt
+AddToArray(ZpOt, "ZpOt");
+//Коррекция для поля ZpOt
+var ZpOt = Array.from(tableObj, x => x.ZpOt).reverse();
+ZpOt = RunRule("Регулярное выражение", ZpOt, 0, /до.*/g, "Text","");
+ //Добавление в таблицу данные колонки ZpOt
+AddToArray(ZpOt, "ZpOt");
+//Коррекция для поля ZpOt
+var ZpOt = Array.from(tableObj, x => x.ZpOt).reverse();
+ZpOt = RunRule("Регулярное выражение", ZpOt, 0, /\d+/g, "Нет","");
+ //Добавление в таблицу данные колонки ZpOt
+AddToArray(ZpOt, "ZpOt");
+//Чтение колонки ZpDo
+var selectorBlockZpDo = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemZpDo = 'div.ui.grid.vacancy-preview_2vHdM > div.four.wide.column.salary-column_2za0O > div > strong > span';
+var ZpDo = ReadData(data, selectorBlockZpDo, selectorItemZpDo, 'InnerText', 'ZpDo'); 
+//Добавление в таблицу данные колонки ZpDo
+AddToArray(ZpDo, "ZpDo");
+//Коррекция для поля ZpDo
+var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
+ZpDo = RunRule("Регулярное выражение", ZpDo, -99, /\s+/g, "Text","");
+ //Добавление в таблицу данные колонки ZpDo
+AddToArray(ZpDo, "ZpDo");
+//Коррекция для поля ZpDo
+var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
+ZpDo = RunRule("Регулярное выражение", ZpDo, 0, /от.*/g, "Text","");
+ //Добавление в таблицу данные колонки ZpDo
+AddToArray(ZpDo, "ZpDo");
+//Коррекция для поля ZpDo
+var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
+ZpDo = RunRule("Регулярное выражение", ZpDo, 0, /\d+\—/g, "Text","");
+ //Добавление в таблицу данные колонки ZpDo
+AddToArray(ZpDo, "ZpDo");
+//Коррекция для поля ZpDo
+var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
+ZpDo = RunRule("Регулярное выражение", ZpDo, 0, /\d+/g, "Нет","");
+ //Добавление в таблицу данные колонки ZpDo
+AddToArray(ZpDo, "ZpDo");
+//Чтение колонки Rabotodatel
+var selectorBlockRabotodatel = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemRabotodatel = 'div.ui.grid.vacancy-preview_2vHdM > div.ten.wide.column.info-column_REucJ > span:nth-child(2) > span > span > a';
+var Rabotodatel = ReadData(data, selectorBlockRabotodatel, selectorItemRabotodatel, 'InnerText', 'Rabotodatel'); 
+//Добавление в таблицу данные колонки Rabotodatel
+AddToArray(Rabotodatel, "Rabotodatel");
 //Чтение колонки DateCreate
-var selectorBlockDateCreate = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemDateCreate = 'div > div.SerpSnippet_data__3ezjY > div.SerpSnippet_topPadding__38j6x > div.SerpSnippet_topInfo__1ZraC > div.SerpSnippet_topInfoLeft__14Csp > div.SerpSnippet_actualDate__2GBsL';
+var selectorBlockDateCreate = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemDateCreate = 'div.ui.grid.vacancy-preview_2vHdM > div.ten.wide.column.info-column_REucJ > span.address_3lqMr.closed_1eD1X > div > span > span:nth-child(2)';
 var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /Обновлено\s+день\s+назад/g, "Переменная: Вчера","17.07.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, -0, /сегодня.*/g, "Нет","22.06.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /.*/g, "Переменная: Сегодня","17.07.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /в.*/g, "Text","");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
-//Чтение колонки Kuzov
-var selectorBlockKuzov = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemKuzov = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(5)';
-var Kuzov = ReadData(data, selectorBlockKuzov, selectorItemKuzov, 'InnerText', 'Kuzov'); 
-//Добавление в таблицу данные колонки Kuzov
-AddToArray(Kuzov, "Kuzov");
-//Чтение колонки KPP
-var selectorBlockKPP = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemKPP = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(6)';
-var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText', 'KPP'); 
-//Добавление в таблицу данные колонки KPP
-AddToArray(KPP, "KPP");
-//Чтение колонки Dvigatel
-var selectorBlockDvigatel = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemDvigatel = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(2)';
-var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText', 'Dvigatel'); 
-//Добавление в таблицу данные колонки Dvigatel
-AddToArray(Dvigatel, "Dvigatel");
-//Коррекция для поля Dvigatel
-var Dvigatel = Array.from(tableObj, x => x.Dvigatel).reverse();
-Dvigatel = RunRule("Регулярное выражение", Dvigatel, 0, /.*л\,/g, "Text","");
- //Добавление в таблицу данные колонки Dvigatel
-AddToArray(Dvigatel, "Dvigatel");
-//Чтение колонки Obem
-var selectorBlockObem = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemObem = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(2)';
-var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText', 'Obem'); 
-//Добавление в таблицу данные колонки Obem
-AddToArray(Obem, "Obem");
-//Коррекция для поля Obem
-var Obem = Array.from(tableObj, x => x.Obem).reverse();
-Obem = RunRule("Регулярное выражение", Obem, 0, /\d+(\.\d+)?/g, "Нет","");
- //Добавление в таблицу данные колонки Obem
-AddToArray(Obem, "Obem");
-//Чтение колонки Power
-var selectorBlockPower = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemPower = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_info__3_y7m > div:nth-child(3)';
-var Power = ReadData(data, selectorBlockPower, selectorItemPower, 'InnerText', 'Power'); 
-//Добавление в таблицу данные колонки Power
-AddToArray(Power, "Power");
-//Коррекция для поля Power
-var Power = Array.from(tableObj, x => x.Power).reverse();
-Power = RunRule("Регулярное выражение", Power, -99, /\D+/g, "Text","");
- //Добавление в таблицу данные колонки Power
-AddToArray(Power, "Power");
-//Чтение колонки VIN
-var selectorBlockVIN = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemVIN = 'div > div.SerpSnippet_data__3ezjY > div:nth-child(2) > div.SerpSnippet_tags__1UxLF > div';
-var VIN = ReadData(data, selectorBlockVIN, selectorItemVIN, 'InnerText', 'VIN'); 
-//Добавление в таблицу данные колонки VIN
-AddToArray(VIN, "VIN");
+//Чтение колонки TipZanyatosri
+var selectorBlockTipZanyatosri = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemTipZanyatosri = 'div.ui.grid.vacancy-preview_2vHdM > div.four.wide.column.salary-column_2za0O > div > div > div:nth-child(1)';
+var TipZanyatosri = ReadData(data, selectorBlockTipZanyatosri, selectorItemTipZanyatosri, 'InnerText', 'TipZanyatosri'); 
+//Добавление в таблицу данные колонки TipZanyatosri
+AddToArray(TipZanyatosri, "TipZanyatosri");
+//Чтение колонки Usloviya
+var selectorBlockUsloviya = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemUsloviya = 'div.ui.grid.vacancy-preview_2vHdM > div.four.wide.column.salary-column_2za0O > div > div > div:nth-child(2)';
+var Usloviya = ReadData(data, selectorBlockUsloviya, selectorItemUsloviya, 'InnerText', 'Usloviya'); 
+//Добавление в таблицу данные колонки Usloviya
+AddToArray(Usloviya, "Usloviya");
+//Чтение колонки Gorod
+var selectorBlockGorod = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemGorod = 'div.ui.grid.vacancy-preview_2vHdM > div.ten.wide.column.info-column_REucJ > span.address_3lqMr.closed_1eD1X > div > span > span:nth-child(3)';
+var Gorod = ReadData(data, selectorBlockGorod, selectorItemGorod, 'InnerText', 'Gorod'); 
+//Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
+//Коррекция для поля Gorod
+var Gorod = Array.from(tableObj, x => x.Gorod).reverse();
+Gorod = RunRule("Регулярное выражение", Gorod, -99, /\,.*/g, "Нет","");
+ //Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
 //Чтение колонки Adress
-var selectorBlockAdress = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemAdress = 'div > div.SerpSnippet_data__3ezjY > div.SerpSnippet_bottomInfo__1zRMv > button';
+var selectorBlockAdress = '#app > div > div.page-type-search > div > div > div > div > div > div:nth-child(2) > div:nth-child(1) > div';
+var selectorItemAdress = 'div.ui.grid.vacancy-preview_2vHdM > div.ten.wide.column.info-column_REucJ > span.address_3lqMr.closed_1eD1X > div > span > span:nth-child(3)';
 var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Коррекция для поля Adress
 var Adress = Array.from(tableObj, x => x.Adress).reverse();
-Adress = RunRule("Текст", Adress, 0, /, показать на карте/g, "Text","");
+Adress = RunRule("Регулярное выражение", Adress, -99, /.*\,/g, "Нет","");
  //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
-//Чтение колонки Contacts
-var selectorBlockContacts = ' #page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div:nth-child(4) > div:nth-child(1) > span > article';
-var selectorItemContacts = 'div > div.SerpSnippet_data__3ezjY > div.SerpSnippet_bottomInfo__1zRMv > div';
-var Contacts = ReadData(data, selectorBlockContacts, selectorItemContacts, 'InnerText', 'Contacts'); 
-//Добавление в таблицу данные колонки Contacts
-AddToArray(Contacts, "Contacts");
-//Коррекция для поля Contacts
-var Contacts = Array.from(tableObj, x => x.Contacts).reverse();
-Contacts = RunRule("Текст", Contacts, 0, /Показать номер/g, "Text","");
- //Добавление в таблицу данные колонки Contacts
-AddToArray(Contacts, "Contacts");
-//Чтение колонки Photo
-var selectorBlockPhoto = '#page-body > div > div.app_gridContainer__3QfzP > div.app_gridContentChildren__17ZMX > div > div:nth-child(1) > span > article';
-var selectorItemPhoto = 'div > div.SerpSnippet_colLeft__1qO8G > a > div:nth-child(1) > div > div.SerpSnippetSlider_item__39435.SerpSnippetSlider_itemActive__GWzze';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'style', 'Photo'); 
-//Добавление в таблицу данные колонки Photo
-AddToArray(Photo, "Photo");
-//Коррекция для поля Photo
-var Photo = Array.from(tableObj, x => x.Photo).reverse();
-Photo = RunRule("Регулярное выражение", Photo, 0, /background-image: url\(\"/g, "Text","");
- //Добавление в таблицу данные колонки Photo
-AddToArray(Photo, "Photo");
-//Коррекция для поля Photo
-var Photo = Array.from(tableObj, x => x.Photo).reverse();
-Photo = RunRule("Регулярное выражение", Photo, 0, /\"\);/g, "Text","");
- //Добавление в таблицу данные колонки Photo
-AddToArray(Photo, "Photo");
 };
 
 
@@ -546,6 +517,6 @@ function GetNameValue(xPathBlock, XPathInBlock, XPathBlockValue,
 
 
 chrome.runtime.sendMessage({
-    action: "1",
+    action: "2",
     source: DOMtoString(document)
 });

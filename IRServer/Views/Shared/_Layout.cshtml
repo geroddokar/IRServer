@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,7 +27,7 @@
                 @Html.ActionLink("Ошибки", "Errors", "ResultTable", new {area = ""}, new {@class = "nav-link"})
             </li>
             <li class="nav-item">
-                @Html.ActionLink("Каталог сайтов", "Index", "Catalog", new {area = ""}, new {@class = "nav-link"})
+                @Html.ActionLink("Каталог сайтов", "Index", "Catalog", new {area = "", id = 0}, new {@class = "nav-link"})
             </li>
 
             <!-- Dropdown -->
@@ -35,11 +36,20 @@
                     Результаты
                 </a>
                 <div class="dropdown-menu">
-                    @Html.ActionLink("ТР Автомобили", "ResultAvto", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
-                    @Html.ActionLink("ТР Работа", "ResultRabota", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
-                    @Html.ActionLink("ТР Недвижимость", "ResultNevg", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
+                    @Html.ActionLink("ТР Автомобили(таблица)", "ResultAvto", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
+                    @Html.ActionLink("ТР Работа(таблица)", "ResultRabota", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
+                    @Html.ActionLink("ТР Недвижимость(таблица)", "ResultNevg", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
+                    @Html.ActionLink("ТР Автомобили", "Avtomobile", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
+                    @Html.ActionLink("ТР Работа", "Rabota", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
+                    @Html.ActionLink("ТР Недвижимость", "Nedvigimost", "ResultTable", new {area = ""}, new {@class = "dropdown-item"})
                 </div>
 
+            </li>
+            <li>
+                @if (!string.IsNullOrEmpty(User.Identity.GetUserName()))
+                {
+                    @Html.ActionLink("Создать спрос", "Create", "Request", new { area = "" }, new {@class = "nav-link"})
+                }
             </li>
         </ul>
     </div>

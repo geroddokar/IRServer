@@ -20,7 +20,7 @@ namespace IRServer.Models
     public class IrobusModel : IdentityDbContext<ApplicationUser>
     {
         public IrobusModel()
-            : base("Server=localhost;port=3306;database=mycontext;uid=root;password=qwerty;Allow User Variables=True;SslMode=none")
+            : base("IrobusModel")
         {
         }
         public static IrobusModel Create()
@@ -42,6 +42,7 @@ namespace IRServer.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<UserSessions> UserSessionss { get; set; }
+        public DbSet<RequestObj> RequestObjs { get; set; }
     }
 
     public class ApplicationUser : IdentityUser

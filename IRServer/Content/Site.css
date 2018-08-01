@@ -104,3 +104,8 @@ body {
     grid-column: 3;
     grid-row: 4;
 }
+
+.catalog {
+    height: 100vh;
+    overflow: auto;
+}

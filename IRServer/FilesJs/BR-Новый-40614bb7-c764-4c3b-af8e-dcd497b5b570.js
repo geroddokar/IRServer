@@ -10,15 +10,15 @@ function DOMtoString(data) {
         
 //Колонки
 {//Чтение колонки Discription
-var selectorBlockDiscription = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockDiscription = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemDiscription = 'div > div.p-instance__inner > div.p-instance__text';
-var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText'); 
+var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText', 'Discription'); 
 //Добавление в таблицу данные колонки Discription
 AddToArray(Discription, "Discription");
 //Чтение колонки Price
-var selectorBlockPrice = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockPrice = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemPrice = 'div > div.p-instance__inner > div:nth-child(1) > div.p-instance__block_right > span.p-instance__title';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText'); 
+var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
 //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Коррекция для поля Price
@@ -27,21 +27,21 @@ Price = RunRule("Регулярное выражение", Price, -99, /\D+/g, "
  //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Чтение колонки UrlString
-var selectorBlockUrlString = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockUrlString = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemUrlString = 'div > div.p-instance__inner > div:nth-child(1) > div.p-instance__block_place > a';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Photo
-var selectorBlockPhoto = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockPhoto = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemPhoto = 'div > div.p-instance__img > span > div > img';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src'); 
+var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src', 'Photo'); 
 //Добавление в таблицу данные колонки Photo
 AddToArray(Photo, "Photo");
 //Чтение колонки Etag
-var selectorBlockEtag = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockEtag = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemEtag = 'div > div.p-instance__inner > div:nth-child(2) > div.hidden_small.hidden_medium > span';
-var Etag = ReadData(data, selectorBlockEtag, selectorItemEtag, 'InnerText'); 
+var Etag = ReadData(data, selectorBlockEtag, selectorItemEtag, 'InnerText', 'Etag'); 
 //Добавление в таблицу данные колонки Etag
 AddToArray(Etag, "Etag");
 //Коррекция для поля Etag
@@ -50,9 +50,9 @@ Etag = RunRule("Регулярное выражение", Etag, -99, /\D+/g, "Te
  //Добавление в таблицу данные колонки Etag
 AddToArray(Etag, "Etag");
 //Чтение колонки AreaAll
-var selectorBlockAreaAll = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockAreaAll = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemAreaAll = 'div > div.p-instance__inner > div:nth-child(2) > div:nth-child(2) > span';
-var AreaAll = ReadData(data, selectorBlockAreaAll, selectorItemAreaAll, 'InnerText'); 
+var AreaAll = ReadData(data, selectorBlockAreaAll, selectorItemAreaAll, 'InnerText', 'AreaAll'); 
 //Добавление в таблицу данные колонки AreaAll
 AddToArray(AreaAll, "AreaAll");
 //Коррекция для поля AreaAll
@@ -66,9 +66,9 @@ AreaAll = RunRule("Регулярное выражение", AreaAll, -99, /\D+/
  //Добавление в таблицу данные колонки AreaAll
 AddToArray(AreaAll, "AreaAll");
 //Чтение колонки AreaLife
-var selectorBlockAreaLife = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockAreaLife = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemAreaLife = 'div > div.p-instance__inner > div:nth-child(2) > div:nth-child(3) > span';
-var AreaLife = ReadData(data, selectorBlockAreaLife, selectorItemAreaLife, 'InnerText'); 
+var AreaLife = ReadData(data, selectorBlockAreaLife, selectorItemAreaLife, 'InnerText', 'AreaLife'); 
 //Добавление в таблицу данные колонки AreaLife
 AddToArray(AreaLife, "AreaLife");
 //Коррекция для поля AreaLife
@@ -82,9 +82,9 @@ AreaLife = RunRule("Регулярное выражение", AreaLife, -99, /\D
  //Добавление в таблицу данные колонки AreaLife
 AddToArray(AreaLife, "AreaLife");
 //Чтение колонки AreaKyhnya
-var selectorBlockAreaKyhnya = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockAreaKyhnya = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemAreaKyhnya = 'div > div.p-instance__inner > div:nth-child(2) > div:nth-child(4) > span';
-var AreaKyhnya = ReadData(data, selectorBlockAreaKyhnya, selectorItemAreaKyhnya, 'InnerText'); 
+var AreaKyhnya = ReadData(data, selectorBlockAreaKyhnya, selectorItemAreaKyhnya, 'InnerText', 'AreaKyhnya'); 
 //Добавление в таблицу данные колонки AreaKyhnya
 AddToArray(AreaKyhnya, "AreaKyhnya");
 //Коррекция для поля AreaKyhnya
@@ -98,9 +98,9 @@ AreaKyhnya = RunRule("Регулярное выражение", AreaKyhnya, -99,
  //Добавление в таблицу данные колонки AreaKyhnya
 AddToArray(AreaKyhnya, "AreaKyhnya");
 //Чтение колонки Adress
-var selectorBlockAdress = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockAdress = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemAdress = 'div > div.p-instance__inner > div:nth-child(1) > div.p-instance__block_place > a';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Коррекция для поля Adress
@@ -109,9 +109,9 @@ Adress = RunRule("Регулярное выражение", Adress, 0, /\d+\s+к
  //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Чтение колонки PriceM
-var selectorBlockPriceM = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockPriceM = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemPriceM = 'div > div.p-instance__inner > div:nth-child(1) > div.p-instance__block_right > span.p-instance__params > div:nth-child(1)';
-var PriceM = ReadData(data, selectorBlockPriceM, selectorItemPriceM, 'InnerText'); 
+var PriceM = ReadData(data, selectorBlockPriceM, selectorItemPriceM, 'InnerText', 'PriceM'); 
 //Добавление в таблицу данные колонки PriceM
 AddToArray(PriceM, "PriceM");
 //Коррекция для поля PriceM
@@ -120,25 +120,25 @@ PriceM = RunRule("Регулярное выражение", PriceM, -99, /\D+/g,
  //Добавление в таблицу данные колонки PriceM
 AddToArray(PriceM, "PriceM");
 //Чтение колонки DateCreate
-var selectorBlockDateCreate = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockDateCreate = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemDateCreate = 'div > div.p-instance__inner > div:nth-child(1) > div.p-instance__block_place > span > div.js-ago';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\s+час.*/g, "Переменная: Сегодня","15.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /\d+\s+час.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Текст", DateCreate, -99, /1 день назад/g, "Переменная: Вчера","14.06.2018");
+DateCreate = RunRule("Текст", DateCreate, 0, /1 день назад/g, "Переменная: Вчера","16.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Чтение колонки CountRoom
-var selectorBlockCountRoom = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockCountRoom = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemCountRoom = 'div > div.p-instance__inner > div:nth-child(1) > div.p-instance__block_place > a';
-var CountRoom = ReadData(data, selectorBlockCountRoom, selectorItemCountRoom, 'InnerText'); 
+var CountRoom = ReadData(data, selectorBlockCountRoom, selectorItemCountRoom, 'InnerText', 'CountRoom'); 
 //Добавление в таблицу данные колонки CountRoom
 AddToArray(CountRoom, "CountRoom");
 //Коррекция для поля CountRoom
@@ -147,9 +147,9 @@ CountRoom = RunRule("Регулярное выражение", CountRoom, 0, /^\
  //Добавление в таблицу данные колонки CountRoom
 AddToArray(CountRoom, "CountRoom");
 //Чтение колонки Metro
-var selectorBlockMetro = 'body > div.layout > div:nth-child(10) > div > div > div > div.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
+var selectorBlockMetro = 'body > div.layout > div.block.js-module > div > div > div > div.cols__column.cols__column_small_32.cols__column_medium_33.cols__column_large_39.js-module > div > div > div.js-search-results__cont > div > div';
 var selectorItemMetro = 'div > div.p-instance__inner > div:nth-child(5) > div:nth-child(1) > span > div';
-var Metro = ReadData(data, selectorBlockMetro, selectorItemMetro, 'InnerText'); 
+var Metro = ReadData(data, selectorBlockMetro, selectorItemMetro, 'InnerText', 'Metro'); 
 //Добавление в таблицу данные колонки Metro
 AddToArray(Metro, "Metro");
 };
@@ -168,7 +168,7 @@ AddToArray(Metro, "Metro");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -189,7 +189,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }
@@ -271,11 +271,10 @@ function TypeTemplateRegexSymbol(fieldSource, index, searchTemplate, typeReplace
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getDate();
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
                                 resultList.push(matches[index]);
@@ -328,11 +327,11 @@ function TypeTemplateTextSymbol(fieldSource, index, searchTemplate, typeReplace,
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getDate();
 
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)

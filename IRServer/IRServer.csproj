@@ -475,8 +475,6 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\Site.css" />
-    <Content Include="FilesJs\amruosn.js" />
-    <Content Include="FilesJs\test.js" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
@@ -1097,6 +1095,26 @@
     <Compile Include="Migrations\201807041049544_ContactsField.Designer.cs">
       <DependentUpon>201807041049544_ContactsField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807091505488_RequestObj.cs" />
+    <Compile Include="Migrations\201807091505488_RequestObj.Designer.cs">
+      <DependentUpon>201807091505488_RequestObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807101305523_userNameRequesttable.cs" />
+    <Compile Include="Migrations\201807101305523_userNameRequesttable.Designer.cs">
+      <DependentUpon>201807101305523_userNameRequesttable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807181021467_TasksPlugin.cs" />
+    <Compile Include="Migrations\201807181021467_TasksPlugin.Designer.cs">
+      <DependentUpon>201807181021467_TasksPlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807181030223_changeTypeFieldTaskPlugin.cs" />
+    <Compile Include="Migrations\201807181030223_changeTypeFieldTaskPlugin.Designer.cs">
+      <DependentUpon>201807181030223_changeTypeFieldTaskPlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807190640055_change.cs" />
+    <Compile Include="Migrations\201807190640055_change.Designer.cs">
+      <DependentUpon>201807190640055_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1151,9 +1169,7 @@
     <Content Include="Views\Shared\kendo.theme.chooser.cshtml" />
     <Content Include="Views\Shared\kendo.notification.cshtml" />
     <Content Include="Views\AccountApi\Register.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
@@ -1179,6 +1195,11 @@
     <Content Include="Views\ResultTable\GetResult.cshtml" />
     <Content Include="Views\ResultTable\Avtomobile.cshtml" />
     <Content Include="Views\ResultTable\Rabota.cshtml" />
+    <Content Include="Views\Request\Create.cshtml" />
+    <Content Include="Views\Request\Details.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ResultTable\Nedvigimost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1188,7 +1209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Request\" />
+    <Folder Include="FilesJs\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711291521033_auth.resx">
@@ -1277,6 +1298,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807041049544_ContactsField.resx">
       <DependentUpon>201807041049544_ContactsField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091505488_RequestObj.resx">
+      <DependentUpon>201807091505488_RequestObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807101305523_userNameRequesttable.resx">
+      <DependentUpon>201807101305523_userNameRequesttable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807181021467_TasksPlugin.resx">
+      <DependentUpon>201807181021467_TasksPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807181030223_changeTypeFieldTaskPlugin.resx">
+      <DependentUpon>201807181030223_changeTypeFieldTaskPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807190640055_change.resx">
+      <DependentUpon>201807190640055_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

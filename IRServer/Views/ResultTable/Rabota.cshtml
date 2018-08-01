@@ -87,12 +87,8 @@
             <div class="form-group">
                 @Html.Label("Контакты", new {@class = "col-md-2 control-label"})
                 <div class="col-md-10 col-sm-offset-2">
-                    @Html.CheckBoxFor(m => Model.Filters.Contacts, new { @class = "form-check-input" })
-                        
-                    @Html.ValidationMessageFor(m => Model.Filters.Contacts, "", new {@class = "text-danger"})
-                   
-                  
-                   
+                    @Html.CheckBoxFor(m => Model.Filters.Contacts, new { @class = "form-check-input" })  
+                    @Html.ValidationMessageFor(m => Model.Filters.Contacts, "", new {@class = "text-danger"}) 
                 </div>
             </div>
             <div class="form-group">
@@ -112,15 +108,15 @@
             <div class="form-group">
                 @Html.Label("Дата создания от", new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => Model.Filters.DateOfChangeFrom, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => Model.Filters.DateOfChangeFrom, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => Model.Filters.DateOfCreateFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.DateOfCreateFrom, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.Label("Дата создания до", new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => Model.Filters.DateOfChangeTo, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => Model.Filters.DateOfChangeTo, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => Model.Filters.DateOfCreateTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.DateOfCreateTo, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
@@ -145,7 +141,6 @@
                     @*<img class="resultphoto rounded float-left mr-3" src="@p.Photo" />*@
                     <div class="media-body">
                         <div class="row">
-
                             <div class="wrapper">
                                 <div class="box photo">
                                     
@@ -161,7 +156,6 @@
 
                                 </div>
                                 <div class="box price">
-
                                     @if (p.ZpOt > 0 && p.ZpDo <= 0)
                                     {
                                         <b> от @p.ZpOt руб.</b>
@@ -205,30 +199,6 @@
                                 <div class="box cont">@p.Gorod, @p.Adress</div>
                                 <div class="box cont">@p.Contacts</div>
                             </div>
-
-
-                            @*<div class="col-8">
-                                    <div>
-                                        Источник: <span>@p.Site</span>
-                                    </div>
-                                    <h4 class="mt-0  mb-1">@p.Marka</h4>
-                                    <div class="wrap">
-                                        <ol>
-                                            <li> @p.Year</li>
-                                            <li> @p.Probeg</li>
-                                            <li> @p.Kuzov</li>
-                                            <li> @p.KPP</li>
-                                            <li> @p.Dvigatel</li>
-                                            <li> @p.Obem</li>
-                                            <li> @p.Color</li>
-                                            <li> @p.Privod</li>
-                                            <li> @p.Power</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <h4>@p.Price</h4>
-                                </div>*@
                         </div>
                     </div>
                 </li>

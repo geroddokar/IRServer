@@ -12,13 +12,13 @@ function DOMtoString(data) {
 {//Чтение колонки Vakansia
 var selectorBlockVakansia = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
 var selectorItemVakansia = 'div:nth-child(2) > div.vacancy-serp-item__info > div.search-item-name > a';
-var Vakansia = ReadData(data, selectorBlockVakansia, selectorItemVakansia, 'InnerText'); 
+var Vakansia = ReadData(data, selectorBlockVakansia, selectorItemVakansia, 'InnerText', 'Vakansia'); 
 //Добавление в таблицу данные колонки Vakansia
 AddToArray(Vakansia, "Vakansia");
 //Чтение колонки ZpOt
 var selectorBlockZpOt = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
 var selectorItemZpOt = 'div:nth-child(2) > div.vacancy-serp-item__sidebar > div';
-var ZpOt = ReadData(data, selectorBlockZpOt, selectorItemZpOt, 'InnerText'); 
+var ZpOt = ReadData(data, selectorBlockZpOt, selectorItemZpOt, 'InnerText', 'ZpOt'); 
 //Добавление в таблицу данные колонки ZpOt
 AddToArray(ZpOt, "ZpOt");
 //Коррекция для поля ZpOt
@@ -28,19 +28,13 @@ ZpOt = RunRule("Регулярное выражение", ZpOt, -99, /\s+/g, "Te
 AddToArray(ZpOt, "ZpOt");
 //Коррекция для поля ZpOt
 var ZpOt = Array.from(tableObj, x => x.ZpOt).reverse();
-ZpOt = RunRule("Регулярное выражение", ZpOt, 0, /^\d+/g, "Нет","");
+ZpOt = RunRule("Регулярное выражение", ZpOt, 0, /\d+/g, "Нет","");
  //Добавление в таблицу данные колонки ZpOt
-AddToArray(ZpOt, "ZpOt");
-var ZpOt = Array.from(tableObj, x => x.ZpOt).reverse();
-ZpOt = RunRule("Регулярное выражение", ZpOt, 0, /до.*/g, "Text","");
-AddToArray(ZpOt, "ZpOt");
-var ZpOt = Array.from(tableObj, x => x.ZpOt).reverse();
-ZpOt = RunRule("Регулярное выражение", ZpOt, -99, /\D+/g, "Text","");
 AddToArray(ZpOt, "ZpOt");
 //Чтение колонки ZpDo
 var selectorBlockZpDo = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
 var selectorItemZpDo = 'div:nth-child(2) > div.vacancy-serp-item__sidebar > div';
-var ZpDo = ReadData(data, selectorBlockZpDo, selectorItemZpDo, 'InnerText'); 
+var ZpDo = ReadData(data, selectorBlockZpDo, selectorItemZpDo, 'InnerText', 'ZpDo'); 
 //Добавление в таблицу данные колонки ZpDo
 AddToArray(ZpDo, "ZpDo");
 //Коррекция для поля ZpDo
@@ -48,17 +42,11 @@ var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
 ZpDo = RunRule("Регулярное выражение", ZpDo, -99, /\s+/g, "Text","");
  //Добавление в таблицу данные колонки ZpDo
 AddToArray(ZpDo, "ZpDo");
-
-//Коррекция для поля ZpDo
-var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
-ZpDo = RunRule("Регулярное выражение", ZpDo, -99, /от.*/g, "Text","");
-AddToArray(ZpDo, "ZpDo");
-
 //Коррекция для поля ZpDo
 var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
 ZpDo = RunRule("Регулярное выражение", ZpDo, 1, /\d+/g, "Нет","");
+ //Добавление в таблицу данные колонки ZpDo
 AddToArray(ZpDo, "ZpDo");
-
 //Коррекция для поля ZpDo
 var ZpDo = Array.from(tableObj, x => x.ZpDo).reverse();
 ZpDo = RunRule("Регулярное выражение", ZpDo, -99, /\D+/g, "Text","");
@@ -67,42 +55,42 @@ AddToArray(ZpDo, "ZpDo");
 //Чтение колонки UrlString
 var selectorBlockUrlString = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
 var selectorItemUrlString = 'div:nth-child(2) > div.vacancy-serp-item__info > div.search-item-name > a';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Discription
 var selectorBlockDiscription = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
-var selectorItemDiscription = 'div:nth-child(3) > div.vacancy-serp-item__info > div:nth-child(1)';
-var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText'); 
+var selectorItemDiscription = 'div:nth-child(3) > div.vacancy-serp-item__info';
+var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText', 'Discription'); 
 //Добавление в таблицу данные колонки Discription
 AddToArray(Discription, "Discription");
 //Чтение колонки DateCreate
 var selectorBlockDateCreate = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
 var selectorItemDateCreate = 'div.vacancy-serp-item__row_controls > span.vacancy-serp-item__controls-item_last > span';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
-//Чтение колонки rod
-var selectorBlockrod = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
-var selectorItemrod = 'div:nth-child(2) > div.vacancy-serp-item__info > div:nth-child(3) > span:nth-child(1)';
-var rod = ReadData(data, selectorBlockrod, selectorItemrod, 'InnerText'); 
-//Добавление в таблицу данные колонки rod
-AddToArray(rod, "rod");
-//Коррекция для поля rod
-var rod = Array.from(tableObj, x => x.rod).reverse();
-rod = RunRule("Регулярное выражение", rod, -99, /,.*/g, "Text","");
- //Добавление в таблицу данные колонки rod
-AddToArray(rod, "rod");
+//Чтение колонки Gorod
+var selectorBlockGorod = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
+var selectorItemGorod = 'div:nth-child(2) > div.vacancy-serp-item__info > div:nth-child(3) > span:nth-child(1)';
+var Gorod = ReadData(data, selectorBlockGorod, selectorItemGorod, 'InnerText', 'Gorod'); 
+//Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
+//Коррекция для поля Gorod
+var Gorod = Array.from(tableObj, x => x.Gorod).reverse();
+Gorod = RunRule("Регулярное выражение", Gorod, -99, /,.*/g, "Text","");
+ //Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
 //Чтение колонки Adress
 var selectorBlockAdress = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
-var selectorItemAdress = 'div:nth-child(2) > div.vacancy-serp-item__info > div:nth-child(3) > span';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var selectorItemAdress = 'div:nth-child(2) > div.vacancy-serp-item__info > div:nth-child(3) > span:nth-child(1) > span';
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Чтение колонки Rabotodatel
 var selectorBlockRabotodatel = 'body > div.HH-MainContent > div.bloko-columns-wrapper > div > div > div.sticky-container > div > div > div.bloko-column_l-13.bloko-column_m-9 > div:nth-child(3) > div > div > div';
 var selectorItemRabotodatel = 'div:nth-child(2) > div.vacancy-serp-item__info > div:nth-child(2) > a.bloko-link_secondary';
-var Rabotodatel = ReadData(data, selectorBlockRabotodatel, selectorItemRabotodatel, 'InnerText'); 
+var Rabotodatel = ReadData(data, selectorBlockRabotodatel, selectorItemRabotodatel, 'InnerText', 'Rabotodatel'); 
 //Добавление в таблицу данные колонки Rabotodatel
 AddToArray(Rabotodatel, "Rabotodatel");
 };
@@ -121,7 +109,7 @@ AddToArray(Rabotodatel, "Rabotodatel");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -142,7 +130,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }
@@ -227,7 +215,7 @@ function TypeTemplateRegexSymbol(fieldSource, index, searchTemplate, typeReplace
                             replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.getDate();
+                            replace = date.getTime()
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
                                 resultList.push(matches[index]);
@@ -283,8 +271,8 @@ function TypeTemplateTextSymbol(fieldSource, index, searchTemplate, typeReplace,
 
                             replace = date.setDate(date.getDate() - 1);;
                         }
-                        if (typeReplace.indexOf("СеYearня") >= 0)
-                            replace = date.getDate();
+                        if (typeReplace.indexOf("Сегодня") >= 0)
+                            replace = date.getTime()
 
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
@@ -370,7 +358,7 @@ function SeparatorTextSymbol(fieldSource, index, searchTemplate) {
             if (matches.length > index)
                 resultList.push(matches[index]);
             else {
-                resultList.push(matches.FirstOrDefault());
+                resultList.push("");
             }
         }
         return resultList;

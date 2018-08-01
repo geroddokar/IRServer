@@ -12,22 +12,28 @@ function DOMtoString(data) {
 {//Чтение колонки Marka
 var selectorBlockMarka = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemMarka = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_main > div';
-var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText'); 
+var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText', 'Marka'); 
 //Добавление в таблицу данные колонки Marka
 AddToArray(Marka, "Marka");
+//Чтение колонки Gorod
+var selectorBlockGorod = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
+var selectorItemGorod = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__params.b-text-gray > div:nth-child(1)';
+var Gorod = ReadData(data, selectorBlockGorod, selectorItemGorod, 'InnerText', 'Gorod'); 
+//Добавление в таблицу данные колонки Gorod
+AddToArray(Gorod, "Gorod");
 }
 //Если [Марка] пусто
  if(Marka.length===0)//То
 {//Чтение колонки Marka
 var selectorBlockMarka = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemMarka = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_main > div.b-advItem__title';
-var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText'); 
+var Marka = ReadData(data, selectorBlockMarka, selectorItemMarka, 'InnerText', 'Marka'); 
 //Добавление в таблицу данные колонки Marka
 AddToArray(Marka, "Marka");
 //Чтение колонки Price
 var selectorBlockPrice = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPrice = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__price';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText'); 
+var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
 //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Коррекция для поля Price
@@ -38,19 +44,19 @@ AddToArray(Price, "Price");
 //Чтение колонки Photo
 var selectorBlockPhoto = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPhoto = 'div.b-advItem__inner > div.b-advItem__pic > div > img';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src'); 
+var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src', 'Photo'); 
 //Добавление в таблицу данные колонки Photo
 AddToArray(Photo, "Photo");
 //Чтение колонки UrlString
 var selectorBlockUrlString = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemUrlString = '';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Probeg
 var selectorBlockProbeg = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemProbeg = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(5)';
-var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText'); 
+var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText', 'Probeg'); 
 //Добавление в таблицу данные колонки Probeg
 AddToArray(Probeg, "Probeg");
 //Коррекция для поля Probeg
@@ -71,7 +77,7 @@ AddToArray(Probeg, "Probeg");
 //Чтение колонки Year
 var selectorBlockYear = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemYear = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_main > div.b-advItem__title';
-var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText'); 
+var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText', 'Year'); 
 //Добавление в таблицу данные колонки Year
 AddToArray(Year, "Year");
 //Коррекция для поля Year
@@ -82,40 +88,35 @@ AddToArray(Year, "Year");
 //Чтение колонки DateCreate
 var selectorBlockDateCreate = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemDateCreate = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__params.b-text-gray > div:nth-child(2)';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /сегодня.*/g, "Переменная: Сегодня","15.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\sминут.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\sминут.*/g, "Переменная: Сегодня","15.06.2018");
- //Добавление в таблицу данные колонки DateCreate
-AddToArray(DateCreate, "DateCreate");
-//Коррекция для поля DateCreate
-var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /\d+\sчас.*/g, "Переменная: Сегодня","15.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /\d+\sчас.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Чтение колонки KPP
 var selectorBlockKPP = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemKPP = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(3)';
-var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText'); 
+var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText', 'KPP'); 
 //Добавление в таблицу данные колонки KPP
 AddToArray(KPP, "KPP");
 //Чтение колонки Dvigatel
 var selectorBlockDvigatel = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemDvigatel = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(2)';
-var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText'); 
+var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText', 'Dvigatel'); 
 //Добавление в таблицу данные колонки Dvigatel
 AddToArray(Dvigatel, "Dvigatel");
 //Чтение колонки Obem
 var selectorBlockObem = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemObem = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(1)';
-var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText'); 
+var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText', 'Obem'); 
 //Добавление в таблицу данные колонки Obem
 AddToArray(Obem, "Obem");
 //Коррекция для поля Obem
@@ -131,13 +132,13 @@ AddToArray(Obem, "Obem");
 //Чтение колонки Privod
 var selectorBlockPrivod = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPrivod = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(4)';
-var Privod = ReadData(data, selectorBlockPrivod, selectorItemPrivod, 'InnerText'); 
+var Privod = ReadData(data, selectorBlockPrivod, selectorItemPrivod, 'InnerText', 'Privod'); 
 //Добавление в таблицу данные колонки Privod
 AddToArray(Privod, "Privod");
 //Чтение колонки Power
 var selectorBlockPower = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPower = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(1) > span';
-var Power = ReadData(data, selectorBlockPower, selectorItemPower, 'InnerText'); 
+var Power = ReadData(data, selectorBlockPower, selectorItemPower, 'InnerText', 'Power'); 
 //Добавление в таблицу данные колонки Power
 AddToArray(Power, "Power");
 //Коррекция для поля Power
@@ -148,14 +149,14 @@ AddToArray(Power, "Power");
 //Чтение колонки Adress
 var selectorBlockAdress = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemAdress = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__params.b-text-gray > div:nth-child(1)';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 }//Иначе
 else {//Чтение колонки Price
 var selectorBlockPrice = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPrice = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__price';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText'); 
+var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
 //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Коррекция для поля Price
@@ -166,19 +167,19 @@ AddToArray(Price, "Price");
 //Чтение колонки UrlString
 var selectorBlockUrlString = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemUrlString = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_main > div';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
 //Добавление в таблицу данные колонки UrlString
 AddToArray(UrlString, "UrlString");
 //Чтение колонки Photo
 var selectorBlockPhoto = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPhoto = 'div.b-advItem__inner > div.b-advItem__pic > div > img';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'data-ofi-src'); 
+var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src', 'Photo'); 
 //Добавление в таблицу данные колонки Photo
 AddToArray(Photo, "Photo");
 //Чтение колонки Probeg
 var selectorBlockProbeg = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemProbeg = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(5)';
-var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText'); 
+var Probeg = ReadData(data, selectorBlockProbeg, selectorItemProbeg, 'InnerText', 'Probeg'); 
 //Добавление в таблицу данные колонки Probeg
 AddToArray(Probeg, "Probeg");
 //Коррекция для поля Probeg
@@ -199,7 +200,7 @@ AddToArray(Probeg, "Probeg");
 //Чтение колонки Year
 var selectorBlockYear = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemYear = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_main > div';
-var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText'); 
+var Year = ReadData(data, selectorBlockYear, selectorItemYear, 'InnerText', 'Year'); 
 //Добавление в таблицу данные колонки Year
 AddToArray(Year, "Year");
 //Коррекция для поля Year
@@ -210,35 +211,35 @@ AddToArray(Year, "Year");
 //Чтение колонки DateCreate
 var selectorBlockDateCreate = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemDateCreate = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__params.b-text-gray > div:nth-child(2)';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\sминут.*/g, "Переменная: Сегодня","15.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\sминут.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\sчас.*/g, "Переменная: Сегодня","15.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\d+\sчас.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Чтение колонки Adress
 var selectorBlockAdress = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemAdress = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_price > div.b-advItem__params.b-text-gray > div:nth-child(1)';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Чтение колонки Privod
 var selectorBlockPrivod = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPrivod = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(4)';
-var Privod = ReadData(data, selectorBlockPrivod, selectorItemPrivod, 'InnerText'); 
+var Privod = ReadData(data, selectorBlockPrivod, selectorItemPrivod, 'InnerText', 'Privod'); 
 //Добавление в таблицу данные колонки Privod
 AddToArray(Privod, "Privod");
 //Чтение колонки Power
 var selectorBlockPower = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemPower = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(1) > span';
-var Power = ReadData(data, selectorBlockPower, selectorItemPower, 'InnerText'); 
+var Power = ReadData(data, selectorBlockPower, selectorItemPower, 'InnerText', 'Power'); 
 //Добавление в таблицу данные колонки Power
 AddToArray(Power, "Power");
 //Коррекция для поля Power
@@ -249,19 +250,19 @@ AddToArray(Power, "Power");
 //Чтение колонки Dvigatel
 var selectorBlockDvigatel = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemDvigatel = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(2)';
-var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText'); 
+var Dvigatel = ReadData(data, selectorBlockDvigatel, selectorItemDvigatel, 'InnerText', 'Dvigatel'); 
 //Добавление в таблицу данные колонки Dvigatel
 AddToArray(Dvigatel, "Dvigatel");
 //Чтение колонки KPP
 var selectorBlockKPP = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemKPP = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(3)';
-var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText'); 
+var KPP = ReadData(data, selectorBlockKPP, selectorItemKPP, 'InnerText', 'KPP'); 
 //Добавление в таблицу данные колонки KPP
 AddToArray(KPP, "KPP");
 //Чтение колонки Obem
 var selectorBlockObem = 'body > div.b-wrapper > div.b-content.b-media-cont.b-media-cont_margin_huge > div.b-left-side > div:nth-child(3) > div:nth-child(10) > span > div.b-media-cont_modifyMobile_sm > a';
 var selectorItemObem = 'div.b-advItem__inner > div.b-advItem__content > div.b-advItem__section_type_params > div.b-advItem__params > div:nth-child(1)';
-var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText'); 
+var Obem = ReadData(data, selectorBlockObem, selectorItemObem, 'InnerText', 'Obem'); 
 //Добавление в таблицу данные колонки Obem
 AddToArray(Obem, "Obem");
 //Коррекция для поля Obem
@@ -290,7 +291,7 @@ AddToArray(Obem, "Obem");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -311,7 +312,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }
@@ -393,11 +394,10 @@ function TypeTemplateRegexSymbol(fieldSource, index, searchTemplate, typeReplace
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getTime()
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
                                 resultList.push(matches[index]);
@@ -450,11 +450,11 @@ function TypeTemplateTextSymbol(fieldSource, index, searchTemplate, typeReplace,
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getTime()
 
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
@@ -540,7 +540,7 @@ function SeparatorTextSymbol(fieldSource, index, searchTemplate) {
             if (matches.length > index)
                 resultList.push(matches[index]);
             else {
-                resultList.push(matches.FirstOrDefault());
+                resultList.push("");
             }
         }
         return resultList;

@@ -1,26 +1,75 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+@model IrobusHelpLib.Category
 @{
     ViewBag.Title = "Каталог сайтов";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.UserId = ViewBag.UserId;
+
 }
 
 <style>
     .tree span:hover {
         font-weight: bold;
     }
+
     ul {
         list-style-type: none;
     }
+
     .tree span {
         cursor: pointer;
     }
 </style>
 <h2>Каталог Сайтов</h2>
 <div class="row">
-  
+    <div class="col-4 catalog" id="cat"></div>
+    <div class="col-8">
+        <section id="addCategory">
+            @using (Html.BeginForm("Post", "CatalogApi", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Добавить задание</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ParentId,"Укажите сайт", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.ParentId,new SelectList(ViewBag.ListSite, "ID", "Name", "ParentId"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ParentId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name,"Имя задания", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Url, "ЮРЛ страницы", new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Url, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Url, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Добавить" class="btn btn-default" />
+                    </div>
+                </div>
+                @Html.HiddenFor(m=>m.UserId )
+            }
+        </section>
+    </div>
 </div>
 <script>
-   
+
+    document.addEventListener("DOMContentLoaded", ready);
+
+    function ready() {
+       var el = document.
+    }
+
     function NodeItem(data) {
         this.data = data;
 
@@ -33,7 +82,7 @@
         } else {
             title = container.appendChild(document.createElement("div"));
         }
-            
+
 
         title.innerHTML = this.data.name;
 
@@ -46,10 +95,12 @@
             return this._childElement = this._childElement || this.element.appendChild(document.createElement("ul"));
         }
     };
+    var name = "@User.Identity.GetUserName()";
 //api/CatalogApi/Get
     $.ajax({
         type: "GET",
         url: '/api/CatalogApi/Get',
+        data: { userName: name },
         contentType: "application/json;charset=utf-8",
         success: function (data, status, xhr) {
             treeData = data;
@@ -59,6 +110,7 @@
             var nodesById = {};
             for (var i = 0; i < nodeCollection.length; i++) nodesById[nodeCollection[i].data.id] = nodeCollection[i];
 
+            var par = document.getElementById('cat');
             var rootNodeItemsContainer = document.createElement("ul");
             rootNodeItemsContainer.id = "list";
             // the magic happens here:
@@ -71,7 +123,7 @@
                 parentElement.appendChild(node.element);
             }
 
-            document.body.appendChild(rootNodeItemsContainer);
+            par.appendChild(rootNodeItemsContainer);
             $(function(){
                 $('#list').find('div').click(function(e){
                     $(this).parent().children('ul').toggle();
@@ -83,5 +135,5 @@
             alert(xhr.responseText);
         }
     });
-   
+
 </script>

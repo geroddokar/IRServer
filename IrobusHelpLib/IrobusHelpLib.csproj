@@ -78,6 +78,7 @@
     <Compile Include="ResultTable.cs" />
     <Compile Include="Script.cs" />
     <Compile Include="ScriptUrl.cs" />
+    <Compile Include="TableDB\TasksPlugin.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="TypeTemplate.cs" />
     <Compile Include="UserSessions.cs" />
@@ -85,5 +86,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,252 @@
+﻿@using IRServer.Models
+@model IRServer.Models.ResultNedvListViewModel
+
+@{
+    ViewBag.Title = "Недвижимость";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Недвижимость</h2>
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm("Nedvigimost", "ResultTable", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "myForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(m => Model.Filters.CurrentPage)
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.AreaAllFrom, "Площадь всего от", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.AreaAllFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.AreaAllFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.AreaAllTo, "Площадь всего до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.AreaAllTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.AreaAllTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.AreaRoomFrom, "Площадь комнат от", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.AreaRoomFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.AreaRoomFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.AreaRoomTo, "Площадь комнат до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.AreaRoomTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.AreaRoomTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.AreaKyhnyaFrom, "Площадь кухни до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.AreaKyhnyaFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.AreaKyhnyaFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.AreaKyhnyaTo, "Площадь кухни до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.AreaKyhnyaTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.AreaKyhnyaTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.Photo, "С Фото", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Photo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Photo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.EtagFrom, "Этаж от", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.EtagFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.EtagFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.EtagTo, "Этаж до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.EtagTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.EtagTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.PriceFrom, "Цена от", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.PriceFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.PriceFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.PriceTo, "Цена до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.PriceTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.PriceTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.PriceMFrom, "Цена за м от", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.PriceMFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.PriceMFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.PriceMTo, "Цена за м до", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.PriceMTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.PriceMTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.TypeSale, "Тип продажи", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.TypeSale, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.TypeSale, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.TypeHouse, "Тип дома", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.TypeHouse, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.TypeHouse, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.Remont, "Ремонт", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Remont, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Remont, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.Discription, "Описание", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Discription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Discription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.Lift, "Лифт", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Lift, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Lift, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.CountRoomFrom, "Комнат От", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.CountRoomFrom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.CountRoomFrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.CountRoomTo, "Комнат До", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.CountRoomTo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.CountRoomTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.Balkon, "Балкон", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Balkon, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Balkon, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Filters.Metro, "Метро", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.Filters.Metro, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => Model.Filters.Metro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Показать" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-8">
+        <ul class="list-unstyled">
+            @foreach (var p in Model.Results)
+            {
+            <li class="media">
+                @*<img class="resultphoto rounded float-left mr-3" src="@p.Photo" />*@
+                <div class="media-body">
+                    <div class="row">
+
+                        <div class="wrapper">
+                            <div class="box photo">
+                                <img class="resultphoto rounded float-left mr-3" src="@p.Photo" />
+                            </div>
+                            <div class="box source">
+                                <div>
+                                    Источник:<a href="@p.UrlString"> <span>@p.Site</span></a>
+                                </div>
+                            </div>
+                            <div class="box date">
+                                @if (@p.DateCreate != null)
+                                {<span>@p.DateCreate.Value.ToString("d")</span>}
+
+                            </div>
+                            <div class="box price"><b>@p.Price руб.</b><br/><b>@p.PriceM руб. м</b></div>
+                            <div class="box marka"><h4><a href="@p.UrlString"> @p.Adress</a></h4></div>
+                            <div class="box desc">
+                             
+                            </div>
+                            <div class="box cont">@p.Adress</div>
+                            <div class="box cont">@p.Contacts</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            }
+        </ul>
+        <div class="pagination">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("Nedvigimost", new { page = x }))
+        </div>
+    </div>
+    <div class="col">
+
+    </div>
+</div>
+
+<script>
+
+    window.onload = function () {
+        var anchors = document.getElementsByClassName('page-link');
+        for (var i = 0; i < anchors.length; i++) {
+            var anchor = anchors[i];
+            anchor.onclick = function () {
+                console.log(this);
+                document.getElementById('Filters_CurrentPage').value = this.innerText;
+                document.getElementById("myForm").submit();
+            }
+        }
+    }
+</script>

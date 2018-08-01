@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ using System.Web.SessionState;
 using System.Web.Http;
 using System.Web.Optimization;
 using IRServer.App_Start;
+using MySql.Data.Entity;
 
 namespace IRServer
 {
@@ -21,6 +23,7 @@ namespace IRServer
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }

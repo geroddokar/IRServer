@@ -12,7 +12,7 @@ function DOMtoString(data) {
 {//Чтение колонки Discription
 var selectorBlockDiscription = '#listing > div';
 var selectorItemDiscription = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.listing-card__descript.hidden-sm__block > div.col-sm-8 > div';
-var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText'); 
+var Discription = ReadData(data, selectorBlockDiscription, selectorItemDiscription, 'InnerText', 'Discription'); 
 //Добавление в таблицу данные колонки Discription
 AddToArray(Discription, "Discription");
 //Коррекция для поля Discription
@@ -23,7 +23,7 @@ AddToArray(Discription, "Discription");
 //Чтение колонки Price
 var selectorBlockPrice = '#listing > div';
 var selectorItemPrice = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.price__item.col-lg-4.col-md-12 > span';
-var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText'); 
+var Price = ReadData(data, selectorBlockPrice, selectorItemPrice, 'InnerText', 'Price'); 
 //Добавление в таблицу данные колонки Price
 AddToArray(Price, "Price");
 //Коррекция для поля Price
@@ -34,7 +34,7 @@ AddToArray(Price, "Price");
 //Чтение колонки PriceM
 var selectorBlockPriceM = '#listing > div';
 var selectorItemPriceM = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.price__item.col-lg-4.col-md-12 > div.price__total.price__total--sm';
-var PriceM = ReadData(data, selectorBlockPriceM, selectorItemPriceM, 'InnerText'); 
+var PriceM = ReadData(data, selectorBlockPriceM, selectorItemPriceM, 'InnerText', 'PriceM'); 
 //Добавление в таблицу данные колонки PriceM
 AddToArray(PriceM, "PriceM");
 //Коррекция для поля PriceM
@@ -42,49 +42,16 @@ var PriceM = Array.from(tableObj, x => x.PriceM).reverse();
 PriceM = RunRule("Регулярное выражение", PriceM, -99, /\D+/g, "Text","");
  //Добавление в таблицу данные колонки PriceM
 AddToArray(PriceM, "PriceM");
-//Чтение колонки UrlString
-var selectorBlockUrlString = '#listing > div';
-var selectorItemUrlString = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.col-sm-11.col-xs-10 > a';
-var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href'); 
-//Добавление в таблицу данные колонки UrlString
-AddToArray(UrlString, "UrlString");
 //Чтение колонки Photo
 var selectorBlockPhoto = '#listing > div ';
 var selectorItemPhoto = 'div:nth-child(1) > div.listing-card__thin > a > img';
-var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src'); 
+var Photo = ReadData(data, selectorBlockPhoto, selectorItemPhoto, 'src', 'Photo'); 
 //Добавление в таблицу данные колонки Photo
 AddToArray(Photo, "Photo");
-//Чтение колонки Etag
-var selectorBlockEtag = '#listing > div';
-var selectorItemEtag = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.col-sm-11.col-xs-10 > a';
-var Etag = ReadData(data, selectorBlockEtag, selectorItemEtag, 'InnerText'); 
-//Добавление в таблицу данные колонки Etag
-AddToArray(Etag, "Etag");
-//Коррекция для поля Etag
-var Etag = Array.from(tableObj, x => x.Etag).reverse();
-Etag = RunRule("Регулярное выражение", Etag, -99, /\s+/g, "Text","");
- //Добавление в таблицу данные колонки Etag
-AddToArray(Etag, "Etag");
-//Коррекция для поля Etag
-var Etag = Array.from(tableObj, x => x.Etag).reverse();
-Etag = RunRule("Регулярное выражение", Etag, -99, /.*этаж/g, "Text","");
- //Добавление в таблицу данные колонки Etag
-AddToArray(Etag, "Etag");
-
-//Коррекция для поля Etag
-var Etag = Array.from(tableObj, x => x.Etag).reverse();
-CountFloor = RunRule("Разделитель", Etag, 0, /\//g, "Нет","");
- //Добавление в таблицу данные колонки CountFloor
-AddToArray(CountFloor, "CountFloor");
-//Коррекция для поля Etag
-var Etag = Array.from(tableObj, x => x.Etag).reverse();
-Etag = RunRule("Регулярное выражение", Etag, 0, /\d+/g, "Нет","");
- //Добавление в таблицу данные колонки Etag
-AddToArray(Etag, "Etag");
 //Чтение колонки Adress
 var selectorBlockAdress = '#listing > div';
 var selectorItemAdress = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.listing-card__line.col-lg-8.col-md-12';
-var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText'); 
+var Adress = ReadData(data, selectorBlockAdress, selectorItemAdress, 'InnerText', 'Adress'); 
 //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
 //Коррекция для поля Adress
@@ -92,36 +59,58 @@ var Adress = Array.from(tableObj, x => x.Adress).reverse();
 Adress = RunRule("Регулярное выражение", Adress, -99, /\s+/g, "Text"," ");
  //Добавление в таблицу данные колонки Adress
 AddToArray(Adress, "Adress");
-//Чтение колонки AreaAll
-var selectorBlockAreaAll = '#listing > div';
-var selectorItemAreaAll = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.col-sm-11.col-xs-10 > a';
-var AreaAll = ReadData(data, selectorBlockAreaAll, selectorItemAreaAll, 'InnerText'); 
-//Добавление в таблицу данные колонки AreaAll
-AddToArray(AreaAll, "AreaAll");
-//Коррекция для поля AreaAll
-var AreaAll = Array.from(tableObj, x => x.AreaAll).reverse();
-AreaAll = RunRule("Регулярное выражение", AreaAll, -99, /\s+/g, "Text","");
- //Добавление в таблицу данные колонки AreaAll
-AddToArray(AreaAll, "AreaAll");
-//Коррекция для поля AreaAll
-var AreaAll = Array.from(tableObj, x => x.AreaAll).reverse();
-AreaAll = RunRule("Регулярное выражение", AreaAll, 0, /\d+м2/g, "Нет","");
- //Добавление в таблицу данные колонки AreaAll
-AddToArray(AreaAll, "AreaAll");
-//Коррекция для поля AreaAll
-var AreaAll = Array.from(tableObj, x => x.AreaAll).reverse();
-AreaAll = RunRule("Регулярное выражение", AreaAll, 0, /м2/g, "Text","");
- //Добавление в таблицу данные колонки AreaAll
-AddToArray(AreaAll, "AreaAll");
-//Коррекция для поля AreaAll
-var AreaAll = Array.from(tableObj, x => x.AreaAll).reverse();
-AreaAll = RunRule("Регулярное выражение", AreaAll, -99, /\D+/g, "Text","");
- //Добавление в таблицу данные колонки AreaAll
-AddToArray(AreaAll, "AreaAll");
+//Коррекция для поля Adress
+var Adress = Array.from(tableObj, x => x.Adress).reverse();
+Adress = RunRule("Текст", Adress, 0, / Адрес:/g, "Text","");
+ //Добавление в таблицу данные колонки Adress
+AddToArray(Adress, "Adress");
+//Чтение колонки Etag
+var selectorBlockEtag = '#listing > div';
+var selectorItemEtag = 'div:nth-child(1) > div.listing-card__wide.clearfix > div:nth-child(1) > a > span';
+var Etag = ReadData(data, selectorBlockEtag, selectorItemEtag, 'InnerText', 'Etag'); 
+//Добавление в таблицу данные колонки Etag
+AddToArray(Etag, "Etag");
+//Коррекция для поля Etag
+var Etag = Array.from(tableObj, x => x.Etag).reverse();
+Etag = RunRule("Регулярное выражение", Etag, 0, /\d+\/[\d|-]+/g, "Нет","");
+ //Добавление в таблицу данные колонки Etag
+AddToArray(Etag, "Etag");
+//Коррекция для поля Etag
+var Etag = Array.from(tableObj, x => x.Etag).reverse();
+Etag = RunRule("Регулярное выражение", Etag, 0, /\d+/g, "Нет","");
+ //Добавление в таблицу данные колонки Etag
+AddToArray(Etag, "Etag");
+//Чтение колонки CountFloor
+var selectorBlockCountFloor = '#listing > div';
+var selectorItemCountFloor = 'div:nth-child(1) > div.listing-card__wide.clearfix > div:nth-child(1) > a > span';
+var CountFloor = ReadData(data, selectorBlockCountFloor, selectorItemCountFloor, 'InnerText', 'CountFloor'); 
+//Добавление в таблицу данные колонки CountFloor
+AddToArray(CountFloor, "CountFloor");
+//Коррекция для поля CountFloor
+var CountFloor = Array.from(tableObj, x => x.CountFloor).reverse();
+CountFloor = RunRule("Регулярное выражение", CountFloor, 0, /\d+\/[\d|-]+/g, "Нет","");
+ //Добавление в таблицу данные колонки CountFloor
+AddToArray(CountFloor, "CountFloor");
+//Коррекция для поля CountFloor
+var CountFloor = Array.from(tableObj, x => x.CountFloor).reverse();
+CountFloor = RunRule("Регулярное выражение", CountFloor, 0, /\d+\//g, "Text","");
+ //Добавление в таблицу данные колонки CountFloor
+AddToArray(CountFloor, "CountFloor");
+//Коррекция для поля CountFloor
+var CountFloor = Array.from(tableObj, x => x.CountFloor).reverse();
+CountFloor = RunRule("Регулярное выражение", CountFloor, -99, /\D+/g, "Text","");
+ //Добавление в таблицу данные колонки CountFloor
+AddToArray(CountFloor, "CountFloor");
+//Чтение колонки UrlString
+var selectorBlockUrlString = '#listing > div';
+var selectorItemUrlString = 'div:nth-child(1) > div.listing-card__wide.clearfix > div:nth-child(1) > a ';
+var UrlString = ReadData(data, selectorBlockUrlString, selectorItemUrlString, 'href', 'UrlString'); 
+//Добавление в таблицу данные колонки UrlString
+AddToArray(UrlString, "UrlString");
 //Чтение колонки CountRoom
 var selectorBlockCountRoom = '#listing > div';
-var selectorItemCountRoom = 'div:nth-child(1) > div.listing-card__wide.clearfix > div.col-sm-11.col-xs-10 > a';
-var CountRoom = ReadData(data, selectorBlockCountRoom, selectorItemCountRoom, 'InnerText'); 
+var selectorItemCountRoom = 'div:nth-child(1) > div.listing-card__wide.clearfix > div:nth-child(1) > a > span';
+var CountRoom = ReadData(data, selectorBlockCountRoom, selectorItemCountRoom, 'InnerText', 'CountRoom'); 
 //Добавление в таблицу данные колонки CountRoom
 AddToArray(CountRoom, "CountRoom");
 //Коррекция для поля CountRoom
@@ -129,32 +118,54 @@ var CountRoom = Array.from(tableObj, x => x.CountRoom).reverse();
 CountRoom = RunRule("Регулярное выражение", CountRoom, 0, /\d+/g, "Нет","");
  //Добавление в таблицу данные колонки CountRoom
 AddToArray(CountRoom, "CountRoom");
+//Чтение колонки AreaAll
+var selectorBlockAreaAll = '#listing > div';
+var selectorItemAreaAll = 'div:nth-child(1) > div.listing-card__wide.clearfix > div:nth-child(1) > a > span';
+var AreaAll = ReadData(data, selectorBlockAreaAll, selectorItemAreaAll, 'InnerText', 'AreaAll'); 
+//Добавление в таблицу данные колонки AreaAll
+AddToArray(AreaAll, "AreaAll");
+//Коррекция для поля AreaAll
+var AreaAll = Array.from(tableObj, x => x.AreaAll).reverse();
+AreaAll = RunRule("Регулярное выражение", AreaAll, 0, /\d+(\,\d+)?\sм2/g, "Нет","");
+ //Добавление в таблицу данные колонки AreaAll
+AddToArray(AreaAll, "AreaAll");
+//Коррекция для поля AreaAll
+var AreaAll = Array.from(tableObj, x => x.AreaAll).reverse();
+AreaAll = RunRule("Регулярное выражение", AreaAll, 0, /\d+/g, "Нет","");
+ //Добавление в таблицу данные колонки AreaAll
+AddToArray(AreaAll, "AreaAll");
 //Чтение колонки DateCreate
 var selectorBlockDateCreate = '#listing > div';
-var selectorItemDateCreate = 'div.hidden-sm__block > div.listing-card__wide.clearfix > div.col-sm-5.text-right.listing-card__owner > span > span';
-var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText'); 
+var selectorItemDateCreate = 'div:nth-child(2) > div.listing-card__wide.clearfix > div.col-sm-5.text-right.listing-card__owner > span > span';
+var DateCreate = ReadData(data, selectorBlockDateCreate, selectorItemDateCreate, 'InnerText', 'DateCreate'); 
 //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /^\s+/g, "Text","");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /.*?Сегодня.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /\s+$/g, "Text","");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /.*?минут.*/g, "Переменная: Сегодня","17.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
 //Коррекция для поля DateCreate
 var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /Сегодня.*/g, "Переменная: Сегодня","15.06.2018");
+DateCreate = RunRule("Регулярное выражение", DateCreate, 0, /.*?Вчера.*/g, "Переменная: Вчера","16.07.2018");
  //Добавление в таблицу данные колонки DateCreate
 AddToArray(DateCreate, "DateCreate");
-//Коррекция для поля DateCreate
-var DateCreate = Array.from(tableObj, x => x.DateCreate).reverse();
-DateCreate = RunRule("Регулярное выражение", DateCreate, -99, /Вчера.*/g, "Переменная: Вчера","14.06.2018");
- //Добавление в таблицу данные колонки DateCreate
-AddToArray(DateCreate, "DateCreate");
+//Чтение колонки Contacts
+var selectorBlockContacts = '#listing > div';
+var selectorItemContacts = 'div:nth-child(2) > div.listing-card__thin > a';
+var Contacts = ReadData(data, selectorBlockContacts, selectorItemContacts, 'InnerText', 'Contacts'); 
+//Добавление в таблицу данные колонки Contacts
+AddToArray(Contacts, "Contacts");
+//Коррекция для поля Contacts
+var Contacts = Array.from(tableObj, x => x.Contacts).reverse();
+Contacts = RunRule("Регулярное выражение", Contacts, -99, /\s+/g, "Text","");
+ //Добавление в таблицу данные колонки Contacts
+AddToArray(Contacts, "Contacts");
 };
 
 
@@ -171,7 +182,7 @@ AddToArray(DateCreate, "DateCreate");
     }
 }
 
-function ReadData(data, blockPath, elementPath, attr) {
+function ReadData(data, blockPath, elementPath, attr, field) {
     var array = [];
     var textDiv = data.querySelectorAll(blockPath);
     for (var i = 0; i < textDiv.length; ++i) {
@@ -192,7 +203,7 @@ function ReadData(data, blockPath, elementPath, attr) {
 
     }
     if (textDiv.length === 0) {
-        errors.push({ Field: "Marka", Value: "" });
+        errors.push({ Field: field, Value: "" });
     }
     return array;
 }
@@ -274,11 +285,10 @@ function TypeTemplateRegexSymbol(fieldSource, index, searchTemplate, typeReplace
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
                         if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getDate();
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
                                 resultList.push(matches[index]);
@@ -330,12 +340,12 @@ function TypeTemplateTextSymbol(fieldSource, index, searchTemplate, typeReplace,
                     var matches = listval[i].match(searchTemplate);
                     if (matches != null && matches.length > 0) {
                         var date = new Date();
-                       if (typeReplace.indexOf("Вчера") >= 0) {
-                            date.setDate(date.getDate() - 1);
-                            replace =date.toJSON().slice(0,10).replace(/-/g,'.');
+                        if (typeReplace.indexOf("Вчера") >= 0) {
+
+                            replace = date.setDate(date.getDate() - 1);;
                         }
                         if (typeReplace.indexOf("Сегодня") >= 0)
-                            replace = date.toJSON().slice(0,10).replace(/-/g,'.');
+                            replace = date.getDate();
 
                         if (typeReplace.indexOf("Нет") >= 0) {
                             if (index >= 0 && matches.length > index)
