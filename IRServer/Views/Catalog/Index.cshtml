@@ -3,10 +3,9 @@
 @{
     ViewBag.Title = "Каталог сайтов";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Model.UserId = ViewBag.UserId;
 
 }
-
+<script src="https://unpkg.com/ionicons@4.2.6/dist/ionicons.js"></script>
 <style>
     .tree span:hover {
         font-weight: bold;
@@ -20,46 +19,53 @@
         cursor: pointer;
     }
 </style>
+
 <h2>Каталог Сайтов</h2>
 <div class="row">
     <div class="col-4 catalog" id="cat"></div>
     <div class="col-8">
-        <section id="addCategory">
-            @using (Html.BeginForm("Post", "CatalogApi", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Добавить задание</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.ParentId,"Укажите сайт", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(m => m.ParentId,new SelectList(ViewBag.ListSite, "ID", "Name", "ParentId"), new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.ParentId, "", new { @class = "text-danger" })
+        @if (User.Identity.IsAuthenticated)
+        {
+            <section id="addCategory">
+                @using (Html.BeginForm("EditTask", "Catalog", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Добавить задание</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ParentId, "Укажите сайт", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.ParentId, (IEnumerable<SelectListItem>)ViewBag.ListSite, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ParentId, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Name,"Имя задания", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Name, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name, "Имя задания", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Url, "ЮРЛ страницы", new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Url, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Url, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Url, "ЮРЛ страницы", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Url, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Url, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Добавить" class="btn btn-default" />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Добавить" class="btn btn-default" />
+                        </div>
                     </div>
-                </div>
-                @Html.HiddenFor(m=>m.UserId )
-            }
-        </section>
+                    @Html.HiddenFor(m => m.UserId)
+                    @Html.HiddenFor(m => m.ID)
+                    @Html.HiddenFor(m => m.Icon)
+                }
+            </section>
+        }
+
     </div>
 </div>
 <script>
@@ -67,7 +73,7 @@
     document.addEventListener("DOMContentLoaded", ready);
 
     function ready() {
-       var el = document.
+      // var el = document.
     }
 
     function NodeItem(data) {
@@ -77,7 +83,9 @@
         var container = document.createElement("li"), title;
         if (data.url) {
             title = container.appendChild(document.createElement("a"));
-            title.href = data.url;
+            title.href = data.userid;
+            if (!data.icon)
+                title.setAttribute("data-id", data.id);
             title.target = "_blank";
         } else {
             title = container.appendChild(document.createElement("div"));
@@ -128,7 +136,32 @@
                 $('#list').find('div').click(function(e){
                     $(this).parent().children('ul').toggle();
                 });
+
+                $('#list a').hover(function () {
+                    var id = this.getAttribute("data-id");
+                    if (id) {
+                        var url = '@Url.Action("Index", "Catalog")';
+                        url = url.replace("/0", "/" + id);
+                        var s = "<a href='" + url + "'><ion-icon name='create'></ion-icon></a> ";
+                        var urldel = '@Url.Action("Delete", "Catalog")';
+                        urldel = urldel + "/" + id;
+                        var sdel = "<a href='" + urldel + "'><ion-icon name='remove-circle'></ion-icon></ion-icon></a> ";
+                        //<ion-icon name="remove-circle"></ion-icon>
+                        $(this).append(s);
+                        $(this).append(sdel);
+                    }
+                    
+                }, function () {
+                    if (this.hasAttribute("data-id")) {
+                        $(this).find("a:last").remove();
+                        $(this).find( "a:last" ).remove();
+                    }
+                   
+                    });
+
             });
+
+
 
         },
         error: function (xhr) {
