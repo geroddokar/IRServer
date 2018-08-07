@@ -88,7 +88,7 @@
                 title.setAttribute("data-id", data.id);
             title.target = "_blank";
         } else {
-            title = container.appendChild(document.createElement("div"));
+            title = container.appendChild(document.createElement("span"));
         }
 
 
@@ -137,26 +137,43 @@
                     $(this).parent().children('ul').toggle();
                 });
 
-                $('#list a').hover(function () {
-                    var id = this.getAttribute("data-id");
-                    if (id) {
-                        var url = '@Url.Action("Index", "Catalog")';
-                        url = url.replace("/0", "/" + id);
-                        var s = "<a href='" + url + "'><ion-icon name='create'></ion-icon></a> ";
-                        var urldel = '@Url.Action("Delete", "Catalog")';
-                        urldel = urldel + "/" + id;
-                        var sdel = "<a href='" + urldel + "'><ion-icon name='remove-circle'></ion-icon></ion-icon></a> ";
-                        //<ion-icon name="remove-circle"></ion-icon>
-                        $(this).append(s);
-                        $(this).append(sdel);
+                $('#list span').hover(function() {
+                        this.style.backgroundColor = "silver";
+                    },
+                    function() {
+                        this.style.backgroundColor = "white";
+                    });
+
+
+                $('#list li').hover(function () {
+                    var item = this.children[0];
+                    if (item.tagName == "A") {
+                        var id = item.getAttribute("data-id");
+                        // this.style.backgroundColor = "silver";
+                        if (id) {
+
+                            var url = '@Url.Action("Index", "Catalog")';
+                            url = url.replace("/0", "/" + id);
+                            var s = "<a href='" + url + "'><ion-icon name='create'></ion-icon></a> ";
+                            var urldel = '@Url.Action("Delete", "Catalog")';
+                            urldel = urldel + "/" + id;
+                            var sdel = "<a href='" + urldel + "'><ion-icon name='remove-circle'></ion-icon></ion-icon></a> ";
+                            //<ion-icon name="remove-circle"></ion-icon>
+                            $(this).append(s);
+                            $(this).append(sdel);
+                        }
                     }
-                    
+
+
                 }, function () {
-                    if (this.hasAttribute("data-id")) {
-                        $(this).find("a:last").remove();
-                        $(this).find( "a:last" ).remove();
+                    //this.style.backgroundColor = "white";
+                    var item = this.children[0];
+                    if (item.tagName == "A") {
+                        if (item.hasAttribute("data-id")) {
+                            $(this).find("a:last").remove();
+                            $(this).find( "a:last" ).remove();
                     }
-                   
+                   }
                     });
 
             });

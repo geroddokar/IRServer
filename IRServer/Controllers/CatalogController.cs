@@ -106,6 +106,8 @@ namespace IRServer.Controllers
 
         }
 
+
+
         [Authorize]
         public ActionResult Delete(int id)
         {
@@ -131,5 +133,8 @@ namespace IRServer.Controllers
             return RedirectToAction("Index", new RouteValueDictionary(new Dictionary<string, object>() { { "id", 0 } }));
 
         }
+
+
+
     }
 }

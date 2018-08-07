@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 using IRServer.App_Start;
 using IRServer.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -91,7 +93,7 @@ namespace IRServer.Controllers
             {
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Email, user.Id, "Confirm your account-Resend");
 
                     // Uncomment to debug locally  
                     ViewBag.Link = callbackUrl;
@@ -177,7 +179,7 @@ namespace IRServer.Controllers
         {
             return View();
         }
-
+        public IrobusModel ctx = new IrobusModel();
         //
         // POST: /Account/Register
         [HttpPost]
@@ -189,12 +191,15 @@ namespace IRServer.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+               
+
                 if (result.Succeeded)
                 {
                     //  Comment the following line to prevent log in until the user is confirmed.
                     //  await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(model.Email, user.Id, "Confirm your account");
 
 
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
@@ -222,6 +227,12 @@ namespace IRServer.Controllers
             {
                 return View("Error");
             }
+            var roleStore = new RoleStore<IdentityRole>(ctx);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            var userStore = new UserStore<ApplicationUser>(ctx);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            userManager.AddToRole(userId, "User");
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -511,13 +522,30 @@ namespace IRServer.Controllers
             }
         }
 
-        private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
+        private async Task<string> SendEmailConfirmationTokenAsync(string modelEmail, string userID, string subject)
         {
+
+            // наш email с заголовком письма
+            MailAddress from = new MailAddress("yakovlevdimaaa@gmail.com", "IRobus account Registration");
+            // кому отправляем
+            MailAddress to = new MailAddress(modelEmail);
+            // создаем объект сообщения
+            MailMessage m = new MailMessage(from, to);
+            // тема письма
+            m.Subject = "Email confirmation";
+            // текст письма - включаем в него ссылку
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                 new { userId = userID, code = code }, protocol: Request.Url.Scheme);
-            await UserManager.SendEmailAsync(userID, subject,
-                "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            m.Body = string.Format("Для завершения регистрации перейдите по ссылке:" +
+                                   "<a href=\"{0}\" title=\"Подтвердить регистрацию\">{0}</a>",
+                callbackUrl);
+            m.IsBodyHtml = true;
+            // адрес smtp-сервера, с которого мы и будем отправлять письмо
+            SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 25);
+            // логин и пароль
+            smtp.Credentials = new System.Net.NetworkCredential("yakovlevdimaaa@gmail.com", "gerod14dokar");
+            smtp.Send(m);
 
             return callbackUrl;
         }
