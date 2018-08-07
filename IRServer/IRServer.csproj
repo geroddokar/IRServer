@@ -1199,8 +1199,8 @@
     <Content Include="Views\Request\Create.cshtml" />
     <Content Include="Views\Request\Details.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ResultTable\Nedvigimost.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
